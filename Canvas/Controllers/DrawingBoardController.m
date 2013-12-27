@@ -52,7 +52,7 @@
     [ib_toolbar setSelectedItemIdentifier:kPenToolbarItemID];
     
     imageDataSource = [[ImageDataSource alloc] initWithSize:[ib_canvas frame].size];
-    [ib_canvas prepareWithImageDataSource:imageDataSource];
+    [ib_canvas prepareWithImageDataSource:imageDataSource controller:self];
     [ib_canvas setNeedsDisplay:YES];
     
     [self.window center];

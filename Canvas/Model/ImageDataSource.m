@@ -11,6 +11,9 @@
 
 @implementation ImageDataSource
 
+@synthesize mainImage;
+@synthesize bufferImage;
+
 #pragma mark - Life Cycle
 - (id)initWithSize:(NSSize)aImageSize {
     
@@ -24,6 +27,14 @@
     }
     
     return self;
+}
+
+- (void)dealloc {
+    
+    [mainImage      release];
+    [bufferImage    release];
+    
+    [super dealloc];
 }
 
 #pragma mark - Drawing

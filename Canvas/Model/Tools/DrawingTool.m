@@ -15,8 +15,10 @@
 @synthesize lineWidth;
 
 - (void)dealloc {
-    [foregroundColor release];
-    [backgroundColor release];
+    [foregroundColor    release];
+    [backgroundColor    release];
+    
+    [path               release];
     
     [super dealloc];
 }

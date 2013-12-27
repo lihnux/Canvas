@@ -9,13 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 @class ImageDataSource;
+@class BaseDrawingWindowController;
 
 @interface Canvas : NSView {
-    ImageDataSource *imageDataSource;
+    ImageDataSource             *imageDataSource;
+    BaseDrawingWindowController *controller;
 }
 
 @property (nonatomic, assign) ImageDataSource *imageDataSource;
 
-- (void)prepareWithImageDataSource:(ImageDataSource*)anImageDataSource;
+- (void)prepareWithImageDataSource:(ImageDataSource*)anImageDataSource controller:(BaseDrawingWindowController*)aController;
 
 @end

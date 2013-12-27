@@ -27,6 +27,8 @@ enum {
     //NSBitmapImageRep *mainImage;
     //NSBitmapImageRep *bufferImage;
     
+    NSBezierPath *path;
+    
     NSPoint lastPoint;
 }
 
@@ -37,4 +39,12 @@ enum {
 - (void)addObserverWithWindowController:(BaseDrawingWindowController*)controller;
 - (void)removeObserverWithWindowController:(BaseDrawingWindowController*)controller;
 
+@end
+
+@interface DrawingTool (Abstract)
+- (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end;
+- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
+					   withMainImage:(NSBitmapImageRep *)mainImage
+						 bufferImage:(NSBitmapImageRep *)bufferImage
+						  mouseEvent:(UInt8)mouseEvent;
 @end

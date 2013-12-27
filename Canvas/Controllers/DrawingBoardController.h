@@ -13,7 +13,6 @@
 @class Canvas;
 
 @interface DrawingBoardController : BaseDrawingWindowController {
-    ImageDataSource *imageDataSource;
     
     IBOutlet Canvas *ib_canvas;
 }

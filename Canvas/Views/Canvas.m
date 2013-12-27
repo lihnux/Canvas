@@ -8,6 +8,8 @@
 
 #import "Canvas.h"
 #import "ImageDataSource.h"
+#import "DrawingTool.h"
+#import "BaseDrawingWindowController.h"
 
 @implementation Canvas
 
@@ -47,83 +49,66 @@
 }
 
 #pragma mark - Public Methods
-- (void)prepareWithImageDataSource:(ImageDataSource *)anImageDataSource {
+- (void)prepareWithImageDataSource:(ImageDataSource *)anImageDataSource controller:(BaseDrawingWindowController*)aController{
     self.imageDataSource = anImageDataSource;
+    controller = aController;
 }
 
 #pragma mark - Mouse Events
 
 - (void)mouseDown:(NSEvent *)event
 {
-    /*
-	isPayingAttention = YES;
 	NSPoint p = [event locationInWindow];
 	NSPoint downPoint = [self convertPoint:p fromView:nil];
 	
 	// Necessary for when the view is zoomed above 100%
-	currentPoint.x = floor(downPoint.x);
-	currentPoint.y = floor(downPoint.y);
-    
-	[[toolbox currentTool] setSavedPoint:currentPoint];
+    //NSPoint currentPoint = NSMakePoint(floor(downPoint.x), floor(downPoint.y));
 	
 	// If it's shifted, do something about it
-	[[toolbox currentTool] setFlags:[event modifierFlags]];
-	[[toolbox currentTool] performDrawAtPoint:currentPoint
-                                withMainImage:[dataSource mainImage]
-                                  bufferImage:[dataSource bufferImage]
-                                   mouseEvent:MOUSE_DOWN];
+	[controller.currentTool performDrawAtPoint:downPoint
+                                 withMainImage:imageDataSource.mainImage
+                                   bufferImage:imageDataSource.bufferImage
+                                    mouseEvent:mouseDownEvent];
+    
+    [self setNeedsDisplay:YES];
 	
-	[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
-     */
+	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
 
 - (void)mouseDragged:(NSEvent *)event
 {
-    /*
-	if (isPayingAttention)
-	{
-		NSPoint p = [event locationInWindow];
-		NSPoint dragPoint = [self convertPoint:p fromView:nil];
+
+    NSPoint p = [event locationInWindow];
+    NSPoint dragPoint = [self convertPoint:p fromView:nil];
+    
+    //NSPoint currentPoint = NSMakePoint(floor(dragPoint.x), floor(dragPoint.y));
+    
+    [controller.currentTool performDrawAtPoint:dragPoint
+                                 withMainImage:imageDataSource.mainImage
+                                   bufferImage:imageDataSource.bufferImage
+                                    mouseEvent:mouseDragEvent];
 		
-		// Necessary for when the view is zoomed above 100%
-		currentPoint.x = floor(dragPoint.x);
-		currentPoint.y = floor(dragPoint.y);
-		
-		[[toolbox currentTool] setFlags:[event modifierFlags]];
-		[[toolbox currentTool] performDrawAtPoint:currentPoint
-									withMainImage:[dataSource mainImage]
-									  bufferImage:[dataSource bufferImage]
-									   mouseEvent:MOUSE_DRAGGED];
-		
-		[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
-	}
-     */
+    [self setNeedsDisplay:YES];
+	
+	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
 
 - (void)mouseUp:(NSEvent *)event
 {
-    /*
-	if (isPayingAttention)
-	{
-		NSPoint p = [event locationInWindow];
-		NSPoint upPoint = [self convertPoint:p fromView:nil];
-		
-		// Necessary for when the view is zoomed above 100%
-		currentPoint.x = floor(upPoint.x);
-		currentPoint.y = floor(upPoint.y);
-		[[toolbox currentTool] setFlags:[event modifierFlags]];
-		NSBezierPath *path = [[toolbox currentTool] performDrawAtPoint:currentPoint
-														 withMainImage:[dataSource mainImage]
-														   bufferImage:[dataSource bufferImage]
-															mouseEvent:MOUSE_UP];
-		
-		if (path) {
-			expPath = path;
-		}
-		
-		[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
-	}
-     */
+    NSPoint p = [event locationInWindow];
+    NSPoint upPoint = [self convertPoint:p fromView:nil];
+    
+    //NSPoint currentPoint = NSMakePoint(floor(dragPoint.x), floor(dragPoint.y));
+    
+    [controller.currentTool performDrawAtPoint:upPoint
+                                 withMainImage:imageDataSource.mainImage
+                                   bufferImage:imageDataSource.bufferImage
+                                    mouseEvent:mouseUpEvent];
+    
+    
+    [self setNeedsDisplay:YES];
+	
+	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
 
 @end

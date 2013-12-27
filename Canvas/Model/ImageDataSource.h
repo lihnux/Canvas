@@ -15,6 +15,9 @@
     NSSize              imageSize;
 }
 
+@property (nonatomic, readonly) NSBitmapImageRep *mainImage;
+@property (nonatomic, readonly) NSBitmapImageRep *bufferImage;
+
 - (id)initWithSize:(NSSize)aImageSize;
 
 - (void)renderToContext:(CGContextRef)context withFrame:(NSRect)frame;

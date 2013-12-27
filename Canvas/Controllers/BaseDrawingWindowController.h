@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class DrawingTool;
+@class ImageDataSource;
 
 enum {
     // H -- Host, P -- Participant
@@ -32,6 +33,8 @@ enum {
 #define kFontToolbarItemID          @"Font"
 
 @interface BaseDrawingWindowController : NSWindowController<NSToolbarDelegate> {
+    
+    ImageDataSource *imageDataSource;
     
     NSColor *foregroundColor;
     NSColor *backgroundColor;
