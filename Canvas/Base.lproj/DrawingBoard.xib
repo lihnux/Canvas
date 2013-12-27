@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DrawingBoardController">
+            <connections>
+                <outlet property="ib_canvas" destination="T8N-WE-TCv" id="4YO-Jn-aM8"/>
+                <outlet property="ib_colorsView" destination="g8T-SX-Lnw" id="ggv-z7-3jg"/>
+                <outlet property="ib_fontView" destination="QJ9-S5-IQl" id="dbG-oL-W8a"/>
+                <outlet property="ib_strokeView" destination="gYS-Vq-S9a" id="uKa-oN-lKB"/>
+                <outlet property="ib_toolbar" destination="GLO-dm-jej" id="RaX-0v-sYD"/>
+                <outlet property="window" destination="1" id="oBz-GF-wkg"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Drawing Board" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" animationBehavior="default" id="1">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="642" y="468" width="582" height="362"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
+            <view key="contentView" id="2">
+                <rect key="frame" x="0.0" y="0.0" width="582" height="362"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="VeV-JL-YCB">
+                        <rect key="frame" x="0.0" y="0.0" width="582" height="362"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" id="yTh-34-YF8">
+                            <rect key="frame" x="1" y="1" width="580" height="360"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view id="T8N-WE-TCv" customClass="Canvas">
+                                    <rect key="frame" x="0.0" y="-240" width="800" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                </view>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="mhE-uT-eGg">
+                            <rect key="frame" x="1" y="345" width="580" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.9916666666666667" horizontal="NO" id="72O-5a-WCK">
+                            <rect key="frame" x="566" y="1" width="15" height="360"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="8316E3AD-C9B4-4CB0-B6A9-AFDE69E9020A" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="small" id="GLO-dm-jej">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="C179A820-D68A-4237-8143-B54777713C8C" explicitItemIdentifier="Pen" label="Pen" paletteLabel="Pen" tag="-1" image="NSActionTemplate" id="PV6-cx-7bz">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="tiP-L7-F1c"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="3F00A784-77B0-43D7-9F37-AC5E6B2D2B88" explicitItemIdentifier="HighLighter" label="High Lighter" paletteLabel="High Lighter" tag="-1" image="NSActionTemplate" id="UqR-HS-cFa">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="PYL-jX-P3L"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9E126367-70BE-4489-AB67-3677BBD16EF1" explicitItemIdentifier="Line" label="Line" paletteLabel="Line" tag="-1" image="NSActionTemplate" id="wg3-Ld-vk8">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="Ea0-gt-hlG"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="980C9F57-6851-4C9B-8A6E-4BD10B58DB3B" explicitItemIdentifier="Rectangle" label="Rectangle" paletteLabel="Rectangle" tag="-1" image="NSActionTemplate" id="0Nc-Vn-3pc">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="Mph-De-bEq"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2E77DBCB-B928-4BCC-8373-0961D0E912B1" explicitItemIdentifier="Ellipse" label="Ellipse" paletteLabel="Ellipse" tag="-1" image="NSActionTemplate" id="mxp-nm-fXI">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="pl1-tA-NH3"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="50DAE6CE-F3E0-4124-A849-42BF19BA73F7" explicitItemIdentifier="Text" label="Text" paletteLabel="Text" tag="-1" image="NSActionTemplate" id="Id5-Ls-WjR">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="zir-4d-npJ"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="38A061CC-1320-45BB-87F2-24704A353651" explicitItemIdentifier="Eraser" label="Eraser" paletteLabel="Eraser" tag="-1" image="NSActionTemplate" id="WcS-IV-0DJ">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="JNj-US-E2r"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F14AE0FF-1852-4C2A-83A9-07421A69E206" explicitItemIdentifier="Clean" label="Clean" paletteLabel="Clean" tag="-1" image="NSActionTemplate" id="gIn-hN-Wph">
+                        <connections>
+                            <action selector="onToolToggle:" target="-2" id="VFi-h5-HhQ"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="UgF-5a-7Ih"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems/>
+                <connections>
+                    <outlet property="delegate" destination="-2" id="j3F-6j-6zz"/>
+                </connections>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="oc7-FA-ABh"/>
+            </connections>
+        </window>
+        <customView id="gYS-Vq-S9a" userLabel="LineWidth">
+            <rect key="frame" x="0.0" y="0.0" width="87" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="piw-wB-jH0">
+                    <rect key="frame" x="4" y="15" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="line width" id="eXS-pe-JHy">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="displayPatternValue1" keyPath="lineWidth" id="MOA-5m-lML">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">Stroke:%{value1}@</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <slider verticalHuggingPriority="750" id="a7a-RV-hJe">
+                    <rect key="frame" x="6" y="0.0" width="74" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="3" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="kbD-Uw-MLN"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="lineWidth" id="SPy-X1-iGM"/>
+                    </connections>
+                </slider>
+            </subviews>
+        </customView>
+        <customView id="g8T-SX-Lnw" userLabel="Colors">
+            <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <colorWell id="ddk-Gu-tZ5">
+                    <rect key="frame" x="11" y="0.0" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="backgroundColor" id="hyA-b5-tjh"/>
+                    </connections>
+                </colorWell>
+                <colorWell id="usw-uA-U3u">
+                    <rect key="frame" x="0.0" y="9" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="foregroundColor" id="gKl-CK-vrW"/>
+                    </connections>
+                </colorWell>
+            </subviews>
+        </customView>
+        <customView id="QJ9-S5-IQl" userLabel="Font">
+            <rect key="frame" x="0.0" y="0.0" width="39" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6gA-cu-DXd">
+                    <rect key="frame" x="4" y="10" width="32" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Font" id="zza-XH-FQl">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
+</document>

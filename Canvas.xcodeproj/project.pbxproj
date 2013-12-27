@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5CF7E15186D4FBF00B26686 /* DrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E14186D4FBF00B26686 /* DrawingTool.m */; };
+		B5CF7E18186D673700B26686 /* PenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E17186D673700B26686 /* PenTool.m */; };
+		B5CF7E1B186D6E8400B26686 /* RectangleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E1A186D6E8400B26686 /* RectangleTool.m */; };
 		B5E709F4186BB61B0047A4B2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E709F3186BB61B0047A4B2 /* Cocoa.framework */; };
 		B5E709FE186BB61B0047A4B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5E709FC186BB61B0047A4B2 /* InfoPlist.strings */; };
 		B5E70A00186BB61B0047A4B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E709FF186BB61B0047A4B2 /* main.m */; };
@@ -14,23 +17,21 @@
 		B5E70A07186BB61B0047A4B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A06186BB61B0047A4B2 /* AppDelegate.m */; };
 		B5E70A0A186BB61B0047A4B2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E70A08186BB61B0047A4B2 /* MainMenu.xib */; };
 		B5E70A0C186BB61C0047A4B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5E70A0B186BB61C0047A4B2 /* Images.xcassets */; };
-		B5E70A13186BB61C0047A4B2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E70A12186BB61C0047A4B2 /* XCTest.framework */; };
-		B5E70A14186BB61C0047A4B2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E709F3186BB61B0047A4B2 /* Cocoa.framework */; };
-		B5E70A1C186BB61C0047A4B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5E70A1A186BB61C0047A4B2 /* InfoPlist.strings */; };
-		B5E70A1E186BB61C0047A4B2 /* CanvasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A1D186BB61C0047A4B2 /* CanvasTests.m */; };
+		B5E70A2B186BB7260047A4B2 /* DrawingBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E70A29186BB7260047A4B2 /* DrawingBoard.xib */; };
+		B5E70A2E186BB7520047A4B2 /* DrawingBoardController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A2D186BB7520047A4B2 /* DrawingBoardController.m */; };
+		B5E70A32186BC1D80047A4B2 /* Canvas.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A31186BC1D80047A4B2 /* Canvas.m */; };
+		B5E70A36186BC58A0047A4B2 /* ImageDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A35186BC58A0047A4B2 /* ImageDataSource.m */; };
+		B5E70A3A186BC6A70047A4B2 /* ImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A39186BC6A70047A4B2 /* ImageTools.m */; };
+		B5E70A3D186D1D500047A4B2 /* BaseDrawingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E70A3C186D1D500047A4B2 /* BaseDrawingWindowController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B5E70A15186BB61C0047A4B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5E709E8186BB61B0047A4B2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5E709EF186BB61B0047A4B2;
-			remoteInfo = Canvas;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		B5CF7E13186D4FBF00B26686 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingTool.h; path = Model/Tools/DrawingTool.h; sourceTree = "<group>"; };
+		B5CF7E14186D4FBF00B26686 /* DrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingTool.m; path = Model/Tools/DrawingTool.m; sourceTree = "<group>"; };
+		B5CF7E16186D673700B26686 /* PenTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenTool.h; path = Model/PenTool.h; sourceTree = "<group>"; };
+		B5CF7E17186D673700B26686 /* PenTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PenTool.m; path = Model/PenTool.m; sourceTree = "<group>"; };
+		B5CF7E19186D6E8400B26686 /* RectangleTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RectangleTool.h; path = Controllers/RectangleTool.h; sourceTree = "<group>"; };
+		B5CF7E1A186D6E8400B26686 /* RectangleTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RectangleTool.m; path = Controllers/RectangleTool.m; sourceTree = "<group>"; };
 		B5E709F0186BB61B0047A4B2 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E709F3186BB61B0047A4B2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B5E709F6186BB61B0047A4B2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -45,11 +46,18 @@
 		B5E70A06186BB61B0047A4B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B5E70A09186BB61B0047A4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B5E70A0B186BB61C0047A4B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B5E70A11186BB61C0047A4B2 /* CanvasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E70A12186BB61C0047A4B2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B5E70A19186BB61C0047A4B2 /* CanvasTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CanvasTests-Info.plist"; sourceTree = "<group>"; };
-		B5E70A1B186BB61C0047A4B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B5E70A1D186BB61C0047A4B2 /* CanvasTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CanvasTests.m; sourceTree = "<group>"; };
+		B5E70A2A186BB7260047A4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DrawingBoard.xib; sourceTree = "<group>"; };
+		B5E70A2C186BB7520047A4B2 /* DrawingBoardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingBoardController.h; path = Controllers/DrawingBoardController.h; sourceTree = "<group>"; };
+		B5E70A2D186BB7520047A4B2 /* DrawingBoardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingBoardController.m; path = Controllers/DrawingBoardController.m; sourceTree = "<group>"; };
+		B5E70A30186BC1D80047A4B2 /* Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Canvas.h; path = Views/Canvas.h; sourceTree = "<group>"; };
+		B5E70A31186BC1D80047A4B2 /* Canvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Canvas.m; path = Views/Canvas.m; sourceTree = "<group>"; };
+		B5E70A34186BC58A0047A4B2 /* ImageDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageDataSource.h; path = Model/ImageDataSource.h; sourceTree = "<group>"; };
+		B5E70A35186BC58A0047A4B2 /* ImageDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageDataSource.m; path = Model/ImageDataSource.m; sourceTree = "<group>"; };
+		B5E70A38186BC6A70047A4B2 /* ImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageTools.h; path = Others/ImageTools.h; sourceTree = "<group>"; };
+		B5E70A39186BC6A70047A4B2 /* ImageTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageTools.m; path = Others/ImageTools.m; sourceTree = "<group>"; };
+		B5E70A3B186D1D500047A4B2 /* BaseDrawingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseDrawingWindowController.h; path = Controllers/BaseDrawingWindowController.h; sourceTree = "<group>"; };
+		B5E70A3C186D1D500047A4B2 /* BaseDrawingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseDrawingWindowController.m; path = Controllers/BaseDrawingWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,23 +69,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5E70A0E186BB61C0047A4B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5E70A14186BB61C0047A4B2 /* Cocoa.framework in Frameworks */,
-				B5E70A13186BB61C0047A4B2 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5CF7E12186D4F8D00B26686 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF7E13186D4FBF00B26686 /* DrawingTool.h */,
+				B5CF7E14186D4FBF00B26686 /* DrawingTool.m */,
+				B5CF7E16186D673700B26686 /* PenTool.h */,
+				B5CF7E17186D673700B26686 /* PenTool.m */,
+				B5CF7E19186D6E8400B26686 /* RectangleTool.h */,
+				B5CF7E1A186D6E8400B26686 /* RectangleTool.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		B5E709E7186BB61B0047A4B2 = {
 			isa = PBXGroup;
 			children = (
 				B5E709F9186BB61B0047A4B2 /* Canvas */,
-				B5E70A17186BB61C0047A4B2 /* CanvasTests */,
 				B5E709F2186BB61B0047A4B2 /* Frameworks */,
 				B5E709F1186BB61B0047A4B2 /* Products */,
 			);
@@ -87,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				B5E709F0186BB61B0047A4B2 /* Canvas.app */,
-				B5E70A11186BB61C0047A4B2 /* CanvasTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,9 +125,11 @@
 		B5E709F9186BB61B0047A4B2 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				B5E70A05186BB61B0047A4B2 /* AppDelegate.h */,
-				B5E70A06186BB61B0047A4B2 /* AppDelegate.m */,
-				B5E70A08186BB61B0047A4B2 /* MainMenu.xib */,
+				B5E70A37186BC6860047A4B2 /* Others */,
+				B5E70A33186BC25E0047A4B2 /* Model */,
+				B5E70A2F186BC1BF0047A4B2 /* Views */,
+				B5E70A28186BB6A60047A4B2 /* Controllers */,
+				B5E70A27186BB6970047A4B2 /* xibs */,
 				B5E70A0B186BB61C0047A4B2 /* Images.xcassets */,
 				B5E709FA186BB61B0047A4B2 /* Supporting Files */,
 			);
@@ -136,22 +148,54 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B5E70A17186BB61C0047A4B2 /* CanvasTests */ = {
+		B5E70A27186BB6970047A4B2 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				B5E70A1D186BB61C0047A4B2 /* CanvasTests.m */,
-				B5E70A18186BB61C0047A4B2 /* Supporting Files */,
+				B5E70A08186BB61B0047A4B2 /* MainMenu.xib */,
+				B5E70A29186BB7260047A4B2 /* DrawingBoard.xib */,
 			);
-			path = CanvasTests;
+			name = xibs;
 			sourceTree = "<group>";
 		};
-		B5E70A18186BB61C0047A4B2 /* Supporting Files */ = {
+		B5E70A28186BB6A60047A4B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5E70A19186BB61C0047A4B2 /* CanvasTests-Info.plist */,
-				B5E70A1A186BB61C0047A4B2 /* InfoPlist.strings */,
+				B5E70A05186BB61B0047A4B2 /* AppDelegate.h */,
+				B5E70A06186BB61B0047A4B2 /* AppDelegate.m */,
+				B5E70A3B186D1D500047A4B2 /* BaseDrawingWindowController.h */,
+				B5E70A3C186D1D500047A4B2 /* BaseDrawingWindowController.m */,
+				B5E70A2C186BB7520047A4B2 /* DrawingBoardController.h */,
+				B5E70A2D186BB7520047A4B2 /* DrawingBoardController.m */,
 			);
-			name = "Supporting Files";
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B5E70A2F186BC1BF0047A4B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5E70A30186BC1D80047A4B2 /* Canvas.h */,
+				B5E70A31186BC1D80047A4B2 /* Canvas.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B5E70A33186BC25E0047A4B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF7E12186D4F8D00B26686 /* Tools */,
+				B5E70A34186BC58A0047A4B2 /* ImageDataSource.h */,
+				B5E70A35186BC58A0047A4B2 /* ImageDataSource.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B5E70A37186BC6860047A4B2 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				B5E70A38186BC6A70047A4B2 /* ImageTools.h */,
+				B5E70A39186BC6A70047A4B2 /* ImageTools.m */,
+			);
+			name = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,24 +218,6 @@
 			productReference = B5E709F0186BB61B0047A4B2 /* Canvas.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B5E70A10186BB61C0047A4B2 /* CanvasTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5E70A24186BB61C0047A4B2 /* Build configuration list for PBXNativeTarget "CanvasTests" */;
-			buildPhases = (
-				B5E70A0D186BB61C0047A4B2 /* Sources */,
-				B5E70A0E186BB61C0047A4B2 /* Frameworks */,
-				B5E70A0F186BB61C0047A4B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5E70A16186BB61C0047A4B2 /* PBXTargetDependency */,
-			);
-			name = CanvasTests;
-			productName = CanvasTests;
-			productReference = B5E70A11186BB61C0047A4B2 /* CanvasTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,11 +226,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Paul Li";
-				TargetAttributes = {
-					B5E70A10186BB61C0047A4B2 = {
-						TestTargetID = B5E709EF186BB61B0047A4B2;
-					};
-				};
 			};
 			buildConfigurationList = B5E709EB186BB61B0047A4B2 /* Build configuration list for PBXProject "Canvas" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -220,7 +241,6 @@
 			projectRoot = "";
 			targets = (
 				B5E709EF186BB61B0047A4B2 /* Canvas */,
-				B5E70A10186BB61C0047A4B2 /* CanvasTests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,14 +254,7 @@
 				B5E70A0C186BB61C0047A4B2 /* Images.xcassets in Resources */,
 				B5E70A04186BB61B0047A4B2 /* Credits.rtf in Resources */,
 				B5E70A0A186BB61B0047A4B2 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5E70A0F186BB61C0047A4B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5E70A1C186BB61C0047A4B2 /* InfoPlist.strings in Resources */,
+				B5E70A2B186BB7260047A4B2 /* DrawingBoard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,27 +266,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5E70A07186BB61B0047A4B2 /* AppDelegate.m in Sources */,
+				B5E70A36186BC58A0047A4B2 /* ImageDataSource.m in Sources */,
+				B5CF7E15186D4FBF00B26686 /* DrawingTool.m in Sources */,
+				B5CF7E18186D673700B26686 /* PenTool.m in Sources */,
+				B5E70A2E186BB7520047A4B2 /* DrawingBoardController.m in Sources */,
+				B5E70A3A186BC6A70047A4B2 /* ImageTools.m in Sources */,
 				B5E70A00186BB61B0047A4B2 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5E70A0D186BB61C0047A4B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5E70A1E186BB61C0047A4B2 /* CanvasTests.m in Sources */,
+				B5E70A3D186D1D500047A4B2 /* BaseDrawingWindowController.m in Sources */,
+				B5E70A32186BC1D80047A4B2 /* Canvas.m in Sources */,
+				B5CF7E1B186D6E8400B26686 /* RectangleTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B5E70A16186BB61C0047A4B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5E709EF186BB61B0047A4B2 /* Canvas */;
-			targetProxy = B5E70A15186BB61C0047A4B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B5E709FC186BB61B0047A4B2 /* InfoPlist.strings */ = {
@@ -300,12 +305,12 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		B5E70A1A186BB61C0047A4B2 /* InfoPlist.strings */ = {
+		B5E70A29186BB7260047A4B2 /* DrawingBoard.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B5E70A1B186BB61C0047A4B2 /* en */,
+				B5E70A2A186BB7260047A4B2 /* Base */,
 			);
-			name = InfoPlist.strings;
+			name = DrawingBoard.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -315,9 +320,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -352,9 +358,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -405,46 +412,6 @@
 			};
 			name = Release;
 		};
-		B5E70A25186BB61C0047A4B2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Canvas.app/Contents/MacOS/Canvas";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Canvas/Canvas-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CanvasTests/CanvasTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B5E70A26186BB61C0047A4B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Canvas.app/Contents/MacOS/Canvas";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Canvas/Canvas-Prefix.pch";
-				INFOPLIST_FILE = "CanvasTests/CanvasTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -464,14 +431,7 @@
 				B5E70A23186BB61C0047A4B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		B5E70A24186BB61C0047A4B2 /* Build configuration list for PBXNativeTarget "CanvasTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5E70A25186BB61C0047A4B2 /* Debug */,
-				B5E70A26186BB61C0047A4B2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

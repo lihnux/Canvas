@@ -7,12 +7,24 @@
 //
 
 #import "AppDelegate.h"
+#import "DrawingBoardController.h"
 
 @implementation AppDelegate
+
+@synthesize drawingBoardController;
+
+- (void)dealloc {
+    
+    [drawingBoardController release];
+    
+    [super dealloc];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    self.drawingBoardController = [[DrawingBoardController alloc] init];
+    [drawingBoardController showWindow:self];
 }
 
 @end

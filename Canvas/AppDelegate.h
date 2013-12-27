@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@class DrawingBoardController;
 
-@property (assign) IBOutlet NSWindow *window;
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    DrawingBoardController *drawingBoardController;
+}
+
+@property (nonatomic, strong) DrawingBoardController *drawingBoardController;
 
 @end
