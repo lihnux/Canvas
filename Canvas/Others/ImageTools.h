@@ -18,4 +18,7 @@ void GCUnlockBitmapImage(NSBitmapImageRep *bitmapImage);
 + (void)clearBitmapImage:(NSBitmapImageRep*)bitmapImage backgroundColor:(NSColor*)backgroundColor;
 + (void)clearBitmapImage:(NSBitmapImageRep*)bitmapImage rect:(NSRect)rect backgroundColor:(NSColor*)backgroundColor;
 
++ (void)drawToImage:(NSBitmapImageRep *)dest fromImage:(NSBitmapImageRep *)src withComposition:(BOOL)shouldCompositeOver;
++ (void)drawToImage:(NSBitmapImageRep *)dest fromImage:(NSBitmapImageRep *)src atPoint:(NSPoint)point withComposition:(BOOL)shouldCompositeOver;
+
 @end

@@ -57,4 +57,23 @@ void GCUnlockBitmapImage(NSBitmapImageRep *bitmapImage) {
 	GCUnlockBitmapImage(bitmapImage);
 }
 
+// Just calls the bigger one with a zeroed-out origin
++ (void)drawToImage:(NSBitmapImageRep *)dest fromImage:(NSBitmapImageRep *)src withComposition:(BOOL)shouldCompositeOver {
+    [ImageTools drawToImage:dest fromImage:src atPoint:NSZeroPoint withComposition:shouldCompositeOver];
+}
+
+
+// Assume both images are allocated, same size
++ (void)drawToImage:(NSBitmapImageRep *)dest fromImage:(NSBitmapImageRep *)src atPoint:(NSPoint)point withComposition:(BOOL)shouldCompositeOver {
+	[NSGraphicsContext saveGraphicsState];
+	[NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithBitmapImageRep:dest]];
+	if (shouldCompositeOver)
+		[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeSourceOver];
+	else
+		[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
+	CGContextDrawImage([[NSGraphicsContext currentContext] graphicsPort],
+					   CGRectMake(point.x, point.y, [src pixelsWide], [src pixelsHigh]), [src CGImage]);
+	[NSGraphicsContext restoreGraphicsState];
+}
+
 @end

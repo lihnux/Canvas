@@ -38,7 +38,10 @@ enum {
     
     NSColor *foregroundColor;
     NSColor *backgroundColor;
+    
     NSUInteger lineWidth;
+    NSUInteger lineMinWidth;
+    NSUInteger lineMaxWidth;
     
     DrawingTool     *currentTool;
     NSDictionary    *toolList;
@@ -53,6 +56,8 @@ enum {
 @property (nonatomic, strong) NSColor       *foregroundColor;
 @property (nonatomic, strong) NSColor       *backgroundColor;
 @property (nonatomic, assign) NSUInteger    lineWidth;
+@property (nonatomic, assign) NSUInteger    lineMinWidth;
+@property (nonatomic, assign) NSUInteger    lineMaxWidth;
 @property (nonatomic, assign) DrawingTool   *currentTool;
 @property (nonatomic, strong) NSDictionary  *toolList;
 

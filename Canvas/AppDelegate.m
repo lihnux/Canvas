@@ -25,6 +25,8 @@
     // Insert code here to initialize your application
     self.drawingBoardController = [[DrawingBoardController alloc] init];
     [drawingBoardController showWindow:self];
+    
+    [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
 }
 
 @end

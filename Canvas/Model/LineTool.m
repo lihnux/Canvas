@@ -1,20 +1,15 @@
 //
-//  RectangleTool.m
+//  LineTool.m
 //  Canvas
 //
-//  Created by Paul Li on 12/27/13.
-//  Copyright (c) 2013 Paul Li. All rights reserved.
+//  Created by Paul Li on 1/2/14.
+//  Copyright (c) 2014 Paul Li. All rights reserved.
 //
 
-#import "RectangleTool.h"
+#import "LineTool.h"
 #import "ImageTools.h"
 
-@implementation RectangleTool
-
-- (id)init {
-    
-    return [super initWithForegroundColor:nil backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.0]];
-}
+@implementation LineTool
 
 #pragma mark - Implement Drawing Methods
 
@@ -23,10 +18,9 @@
     path = [NSBezierPath bezierPath];
     
     [path setLineWidth:lineWidth];
-	[path setLineCapStyle:NSSquareLineCapStyle];
-	[path moveToPoint:begin];
     
-    [path appendBezierPathWithRect:NSMakeRect(begin.x, begin.y, end.x - begin.x, end.y - begin.y)];
+	[path moveToPoint:begin];
+    [path lineToPoint:end];
     
 	return path;
 }
@@ -57,10 +51,8 @@
         [self pathFromPoint:lastPoint toPoint:point];
         
         [foregroundColor setStroke];
-        [backgroundColor setFill];
         
         [path stroke];
-        [path fill];
         
         GCUnlockBitmapImage(drawToImage);
     }

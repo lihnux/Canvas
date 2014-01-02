@@ -56,7 +56,7 @@
                             <action selector="onToolToggle:" target="-2" id="tiP-L7-F1c"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3F00A784-77B0-43D7-9F37-AC5E6B2D2B88" explicitItemIdentifier="HighLighter" label="High Lighter" paletteLabel="High Lighter" tag="-1" image="NSActionTemplate" id="UqR-HS-cFa">
+                    <toolbarItem implicitItemIdentifier="3F00A784-77B0-43D7-9F37-AC5E6B2D2B88" explicitItemIdentifier="HighLighter" label="High Lighter" paletteLabel="HighLighter" tag="-1" image="NSActionTemplate" id="UqR-HS-cFa">
                         <connections>
                             <action selector="onToolToggle:" target="-2" id="PYL-jX-P3L"/>
                         </connections>
@@ -88,7 +88,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="F14AE0FF-1852-4C2A-83A9-07421A69E206" explicitItemIdentifier="Clean" label="Clean" paletteLabel="Clean" tag="-1" image="NSActionTemplate" id="gIn-hN-Wph">
                         <connections>
-                            <action selector="onToolToggle:" target="-2" id="VFi-h5-HhQ"/>
+                            <action selector="onClean:" target="-2" id="eAT-dY-VHa"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="UgF-5a-7Ih"/>
@@ -125,27 +125,29 @@
                 <slider verticalHuggingPriority="750" id="a7a-RV-hJe">
                     <rect key="frame" x="6" y="0.0" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="3" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="kbD-Uw-MLN"/>
+                    <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="1" maxValue="15" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="15" sliderType="linear" id="kbD-Uw-MLN"/>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="lineWidth" id="SPy-X1-iGM"/>
+                        <binding destination="-2" name="maxValue" keyPath="lineMaxWidth" id="VdZ-xK-VCC"/>
+                        <binding destination="-2" name="minValue" keyPath="lineMinWidth" previousBinding="VdZ-xK-VCC" id="uZo-HO-SgH"/>
+                        <binding destination="-2" name="value" keyPath="lineWidth" previousBinding="uZo-HO-SgH" id="XLh-VX-0eO"/>
                     </connections>
                 </slider>
             </subviews>
         </customView>
         <customView id="g8T-SX-Lnw" userLabel="Colors">
-            <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
+            <rect key="frame" x="0.0" y="0.0" width="32" height="31"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <colorWell id="ddk-Gu-tZ5">
-                    <rect key="frame" x="11" y="0.0" width="22" height="22"/>
+                <colorWell id="ddk-Gu-tZ5" customClass="ColorWell">
+                    <rect key="frame" x="12" y="0.0" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <binding destination="-2" name="value" keyPath="backgroundColor" id="hyA-b5-tjh"/>
                     </connections>
                 </colorWell>
-                <colorWell id="usw-uA-U3u">
-                    <rect key="frame" x="0.0" y="9" width="22" height="22"/>
+                <colorWell id="usw-uA-U3u" customClass="ColorWell">
+                    <rect key="frame" x="0.0" y="11" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>

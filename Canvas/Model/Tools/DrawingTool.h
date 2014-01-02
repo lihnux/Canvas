@@ -22,10 +22,10 @@ enum {
 @interface DrawingTool : NSObject {
     NSColor     *foregroundColor;
     NSColor     *backgroundColor;
-    NSUInteger  lineWidth;
     
-    //NSBitmapImageRep *mainImage;
-    //NSBitmapImageRep *bufferImage;
+    NSUInteger  lineWidth;
+    NSUInteger  lineMinWidth;
+    NSUInteger  lineMaxWidth;
     
     NSBezierPath *path;
     
@@ -35,6 +35,11 @@ enum {
 @property (nonatomic, strong) NSColor       *foregroundColor;
 @property (nonatomic, strong) NSColor       *backgroundColor;
 @property (nonatomic, assign) NSUInteger    lineWidth;
+@property (nonatomic, assign) NSUInteger    lineMinWidth;
+@property (nonatomic, assign) NSUInteger    lineMaxWidth;
+
+- (id)initWithForegroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor;
+- (id)initWithLineWidth:(NSUInteger)aLineWidth lineMinWidth:(NSUInteger)aLineMinWidth lineMaxWidth:(NSUInteger)aLineMaxWidth foregroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor;
 
 - (void)addObserverWithWindowController:(BaseDrawingWindowController*)controller;
 - (void)removeObserverWithWindowController:(BaseDrawingWindowController*)controller;

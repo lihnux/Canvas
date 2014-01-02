@@ -11,17 +11,6 @@
 
 @implementation PenTool
 
-- (id)init {
-    self = [super init];
-    
-    if (self) {
-        self.foregroundColor = [NSColor colorWithCalibratedRed:0.0 green:0.0 blue:0.0 alpha:1.0];
-        self.backgroundColor = [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-        self.lineWidth = 3;
-    }
-    return self;
-}
-
 #pragma mark - Implement Drawing Methods
 
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
@@ -45,7 +34,7 @@
 						  mouseEvent:(UInt8)mouseEvent {
 	
 	if (mouseEvent == mouseUpEvent) {
-		//[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];
+		[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];
         [ImageTools clearBitmapImage:bufferImage];
         
 		[path release];

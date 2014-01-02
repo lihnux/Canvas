@@ -13,12 +13,38 @@
 @synthesize foregroundColor;
 @synthesize backgroundColor;
 @synthesize lineWidth;
+@synthesize lineMinWidth;
+@synthesize lineMaxWidth;
+
+- (id)init {
+    return [self initWithForegroundColor:nil backgroundColor:nil];
+}
+
+- (id)initWithForegroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor {
+    return [self initWithLineWidth:3 lineMinWidth:1 lineMaxWidth:15 foregroundColor:aForegroundColor backgroundColor:aBackgroundColor];
+}
+
+- (id)initWithLineWidth:(NSUInteger)aLineWidth lineMinWidth:(NSUInteger)aLineMinWidth lineMaxWidth:(NSUInteger)aLineMaxWidth foregroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor {
+    self = [super init];
+    
+    if (self) {
+        
+        self.foregroundColor    = (aForegroundColor == nil) ? [NSColor colorWithCalibratedRed:0.0 green:0.0 blue:0.0 alpha:1.0] : aForegroundColor;
+        self.backgroundColor    = (aBackgroundColor == nil) ? [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0] : aBackgroundColor;
+        self.lineWidth          = aLineWidth;
+        self.lineMinWidth       = aLineMinWidth;
+        self.lineMaxWidth       = aLineMaxWidth;
+    }
+    
+    return self;
+}
 
 - (void)dealloc {
-    [foregroundColor    release];
-    [backgroundColor    release];
     
-    [path               release];
+    [foregroundColor        release];
+    [backgroundColor        release];
+    
+    [path                   release];
     
     [super dealloc];
 }

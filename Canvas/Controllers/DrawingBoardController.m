@@ -9,8 +9,14 @@
 #import "ImageDataSource.h"
 #import "Canvas.h"
 
+#import "ImageTools.h"
+
 #import "PenTool.h"
 #import "RectangleTool.h"
+#import "EllipseTool.h"
+#import "LineTool.h"
+#import "HighLighterTool.h"
+#import "EraserTool.h"
 
 #import "DrawingBoardController.h"
 
@@ -28,8 +34,12 @@
     if (self) {
         
         // Init the tools
-        self.toolList = [NSDictionary dictionaryWithObjectsAndKeys: [[PenTool alloc] init], kPenToolbarItemID,
-                                                                    [[RectangleTool alloc] init], kRectangleToolbarItemID,
+        self.toolList = [NSDictionary dictionaryWithObjectsAndKeys: [[PenTool alloc] init],         kPenToolbarItemID,
+                                                                    [[RectangleTool alloc] init],   kRectangleToolbarItemID,
+                                                                    [[EllipseTool alloc] init],     kEllipseToolbarItemID,
+                                                                    [[LineTool alloc] init],        kLineToolbarItemID,
+                                                                    [[HighLighterTool alloc] init], kHighLighterToolbarItemID,
+                                                                    [[EraserTool alloc] init],      kEraserToolbarItemID,
                          nil];
         
         // Set the current tool
@@ -56,6 +66,13 @@
     [ib_canvas setNeedsDisplay:YES];
     
     [self.window center];
+}
+
+#pragma mark - Override the toolbar actions
+- (IBAction)onClean:(id)sender {
+    
+    [ImageTools clearBitmapImage:imageDataSource.mainImage backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+    [ib_canvas setNeedsDisplay:YES];
 }
 
 #pragma mark - Override the toolbar items

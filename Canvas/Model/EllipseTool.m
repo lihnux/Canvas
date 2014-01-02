@@ -1,15 +1,15 @@
 //
-//  RectangleTool.m
+//  EllipseTool.m
 //  Canvas
 //
-//  Created by Paul Li on 12/27/13.
-//  Copyright (c) 2013 Paul Li. All rights reserved.
+//  Created by Paul Li on 1/2/14.
+//  Copyright (c) 2014 Paul Li. All rights reserved.
 //
 
-#import "RectangleTool.h"
+#import "EllipseTool.h"
 #import "ImageTools.h"
 
-@implementation RectangleTool
+@implementation EllipseTool
 
 - (id)init {
     
@@ -26,7 +26,7 @@
 	[path setLineCapStyle:NSSquareLineCapStyle];
 	[path moveToPoint:begin];
     
-    [path appendBezierPathWithRect:NSMakeRect(begin.x, begin.y, end.x - begin.x, end.y - begin.y)];
+    [path appendBezierPathWithOvalInRect:NSMakeRect(begin.x, begin.y, end.x - begin.x, end.y - begin.y)];
     
 	return path;
 }

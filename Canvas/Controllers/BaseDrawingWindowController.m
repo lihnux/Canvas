@@ -15,6 +15,8 @@
 @synthesize foregroundColor;
 @synthesize backgroundColor;
 @synthesize lineWidth;
+@synthesize lineMinWidth;
+@synthesize lineMaxWidth;
 @synthesize currentTool;
 @synthesize toolList;
 
@@ -53,6 +55,8 @@
     self.foregroundColor    = self.currentTool.foregroundColor;
     self.backgroundColor    = self.currentTool.backgroundColor;
     self.lineWidth          = self.currentTool.lineWidth;
+    self.lineMinWidth       = self.currentTool.lineMinWidth;
+    self.lineMaxWidth       = self.currentTool.lineMaxWidth;
     
     [currentTool addObserverWithWindowController:self];
 }
