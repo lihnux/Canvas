@@ -11,6 +11,15 @@
 
 @implementation PenTool
 
+- (id)init {
+    
+    return [super initWithForegroundColor:nil backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.0]];
+}
+
+- (NSString*)description {
+    return kPenToolbarItemID;
+}
+
 #pragma mark - Implement Drawing Methods
 
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
@@ -31,7 +40,8 @@
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
 					   withMainImage:(NSBitmapImageRep *)mainImage
 						 bufferImage:(NSBitmapImageRep *)bufferImage
-						  mouseEvent:(UInt8)mouseEvent {
+						  mouseEvent:(UInt8)mouseEvent
+                                view:(NSView*)fromView {
 	
 	if (mouseEvent == mouseUpEvent) {
 		[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];

@@ -48,6 +48,10 @@
     return YES;
 }
 
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
 #pragma mark - Public Methods
 - (void)prepareWithImageDataSource:(ImageDataSource *)anImageDataSource controller:(BaseDrawingWindowController*)aController{
     self.imageDataSource = anImageDataSource;
@@ -61,36 +65,28 @@
 	NSPoint p = [event locationInWindow];
 	NSPoint downPoint = [self convertPoint:p fromView:nil];
 	
-	// Necessary for when the view is zoomed above 100%
-    //NSPoint currentPoint = NSMakePoint(floor(downPoint.x), floor(downPoint.y));
-	
 	// If it's shifted, do something about it
 	[controller.currentTool performDrawAtPoint:downPoint
                                  withMainImage:imageDataSource.mainImage
                                    bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseDownEvent];
+                                    mouseEvent:mouseDownEvent
+                                          view:self];
     
     [self setNeedsDisplay:YES];
-	
-	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
 
 - (void)mouseDragged:(NSEvent *)event
 {
-
     NSPoint p = [event locationInWindow];
     NSPoint dragPoint = [self convertPoint:p fromView:nil];
-    
-    //NSPoint currentPoint = NSMakePoint(floor(dragPoint.x), floor(dragPoint.y));
     
     [controller.currentTool performDrawAtPoint:dragPoint
                                  withMainImage:imageDataSource.mainImage
                                    bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseDragEvent];
+                                    mouseEvent:mouseDragEvent
+                                          view:self];
 		
     [self setNeedsDisplay:YES];
-	
-	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
 
 - (void)mouseUp:(NSEvent *)event
@@ -98,17 +94,35 @@
     NSPoint p = [event locationInWindow];
     NSPoint upPoint = [self convertPoint:p fromView:nil];
     
-    //NSPoint currentPoint = NSMakePoint(floor(dragPoint.x), floor(dragPoint.y));
-    
     [controller.currentTool performDrawAtPoint:upPoint
                                  withMainImage:imageDataSource.mainImage
                                    bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseUpEvent];
+                                    mouseEvent:mouseUpEvent
+                                          view:self];
     
     
     [self setNeedsDisplay:YES];
-	
-	//[self setNeedsDisplayInRect:[[toolbox currentTool] invalidRect]];
 }
+
+#pragma mark - Key Event
+- (void)keyDown:(NSEvent *)theEvent {
+    
+    NSString *chars = theEvent.charactersIgnoringModifiers;
+    unichar aChar = [chars characterAtIndex: 0];
+    
+    switch (aChar) {
+        case 3:
+        case 13: // Enter Key Event
+            break;
+        case 127: // Delete Key Event
+            break;
+        default:
+            break;
+    }
+    
+    NSLog(@"Key down");
+    
+}
+
 
 @end

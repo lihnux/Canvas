@@ -19,29 +19,22 @@ enum {
     canvasForAnnotationP = 4,
 };
 
-#define kSelectToolbarItemID        @"Select"
-#define kPenToolbarItemID           @"Pen"
-#define kHighLighterToolbarItemID   @"HighLighter"
-#define kLineToolbarItemID          @"Line"
-#define kRectangleToolbarItemID     @"Rectangle"
-#define kEllipseToolbarItemID       @"Ellipse"
-#define kTextToolbarItemID          @"Text"
-#define kEraserToolbarItemID        @"Eraser"
-#define kCleanToolbarItemID         @"Clean"
-#define kLineWidthToolbarItemID     @"Stroke"
-#define kColorsToolbarItemID        @"Colors"
-#define kFontToolbarItemID          @"Font"
-
 @interface BaseDrawingWindowController : NSWindowController<NSToolbarDelegate> {
     
     ImageDataSource *imageDataSource;
     
-    NSColor *foregroundColor;
-    NSColor *backgroundColor;
+    NSColor     *foregroundColor;
+    NSColor     *backgroundColor;
     
-    NSUInteger lineWidth;
-    NSUInteger lineMinWidth;
-    NSUInteger lineMaxWidth;
+    NSUInteger  lineWidth;
+    NSUInteger  lineMinWidth;
+    NSUInteger  lineMaxWidth;
+    
+    NSString    *fontFamily;
+    NSString    *fontSize;
+    BOOL        bold;
+    BOOL        italic;
+    BOOL        underline;
     
     DrawingTool     *currentTool;
     NSDictionary    *toolList;
@@ -53,17 +46,23 @@ enum {
     IBOutlet NSView     *ib_fontView;
 }
 
-@property (nonatomic, strong) NSColor       *foregroundColor;
-@property (nonatomic, strong) NSColor       *backgroundColor;
-@property (nonatomic, assign) NSUInteger    lineWidth;
-@property (nonatomic, assign) NSUInteger    lineMinWidth;
-@property (nonatomic, assign) NSUInteger    lineMaxWidth;
-@property (nonatomic, assign) DrawingTool   *currentTool;
-@property (nonatomic, strong) NSDictionary  *toolList;
+@property (nonatomic, strong)   NSColor         *foregroundColor;
+@property (nonatomic, strong)   NSColor         *backgroundColor;
+@property (nonatomic, assign)   NSUInteger      lineWidth;
+@property (nonatomic, assign)   NSUInteger      lineMinWidth;
+@property (nonatomic, assign)   NSUInteger      lineMaxWidth;
+@property (nonatomic, copy)     NSString        *fontFamily;
+@property (nonatomic, copy)     NSString        *fontSize;
+@property (nonatomic, assign)   BOOL            bold;
+@property (nonatomic, assign)   BOOL            italic;
+@property (nonatomic, assign)   BOOL            underline;
+@property (nonatomic, assign)   DrawingTool     *currentTool;
+@property (nonatomic, strong)   NSDictionary    *toolList;
 
 - (NSArray*)toolbarItems;
 - (NSArray*)toolbarSelectableItems;
 - (void)changeCurrentToolWithString:(NSString*)string;
+- (NSUInteger)lineWidthOrFontItemIndex;
 
 - (IBAction)onToolToggle:(id)sender;
 - (IBAction)onClean:(id)sender;

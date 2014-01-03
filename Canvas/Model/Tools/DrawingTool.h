@@ -9,9 +9,31 @@
 #import <Foundation/Foundation.h>
 @class BaseDrawingWindowController;
 
-#define kLineWidthKey       @"lineWidth"
-#define kForegroundColorKey @"foregroundColor"
-#define kBackgroundColorKey @"backgroundColor"
+#define kLineWidthKey               @"lineWidth"
+#define kForegroundColorKey         @"foregroundColor"
+#define kBackgroundColorKey         @"backgroundColor"
+#define kFontFamilyKey              @"fontFamily"
+#define kFontSizeKey                @"fontSize"
+#define kFontBoldKey                @"bold"
+#define kFontItalicKey              @"italic"
+#define kFontUnderlineKey           @"underline"
+
+/////////////////////////////////////////////////
+
+#define kSelectToolbarItemID        @"Select"
+#define kPenToolbarItemID           @"Pen"
+#define kHighLighterToolbarItemID   @"HighLighter"
+#define kLineToolbarItemID          @"Line"
+#define kRectangleToolbarItemID     @"Rectangle"
+#define kEllipseToolbarItemID       @"Ellipse"
+#define kTextToolbarItemID          @"Text"
+#define kEraserToolbarItemID        @"Eraser"
+#define kCleanToolbarItemID         @"Clean"
+#define kLineWidthToolbarItemID     @"Stroke"
+#define kColorsToolbarItemID        @"Colors"
+#define kFontToolbarItemID          @"Font"
+
+/////////////////////////////////////////////////
 
 enum {
     mouseDownEvent  = 1,
@@ -51,5 +73,6 @@ enum {
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
 					   withMainImage:(NSBitmapImageRep *)mainImage
 						 bufferImage:(NSBitmapImageRep *)bufferImage
-						  mouseEvent:(UInt8)mouseEvent;
+						  mouseEvent:(UInt8)mouseEvent
+                                view:(NSView*)fromView;
 @end

@@ -17,6 +17,7 @@
 #import "LineTool.h"
 #import "HighLighterTool.h"
 #import "EraserTool.h"
+#import "TextTool.h"
 
 #import "DrawingBoardController.h"
 
@@ -40,6 +41,7 @@
                                                                     [[LineTool alloc] init],        kLineToolbarItemID,
                                                                     [[HighLighterTool alloc] init], kHighLighterToolbarItemID,
                                                                     [[EraserTool alloc] init],      kEraserToolbarItemID,
+                                                                    [[TextTool alloc] init],        kTextToolbarItemID,
                          nil];
         
         // Set the current tool
@@ -68,7 +70,8 @@
     [self.window center];
 }
 
-#pragma mark - Override the toolbar actions
+#pragma mark - Override Methods
+
 - (IBAction)onClean:(id)sender {
     
     [ImageTools clearBitmapImage:imageDataSource.mainImage backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -82,7 +85,7 @@
                                         kLineToolbarItemID, kRectangleToolbarItemID, kEllipseToolbarItemID,
                                         kTextToolbarItemID, kEraserToolbarItemID, kCleanToolbarItemID,
                                         NSToolbarSeparatorItemIdentifier,
-                                        kLineWidthToolbarItemID, kFontToolbarItemID, kColorsToolbarItemID,
+                                        kColorsToolbarItemID, kLineWidthToolbarItemID,
             nil];
 }
 

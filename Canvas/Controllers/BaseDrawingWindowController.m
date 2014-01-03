@@ -9,6 +9,7 @@
 #import "BaseDrawingWindowController.h"
 #import "PenTool.h"
 #import "RectangleTool.h"
+#import "TextTool.h"
 
 @implementation BaseDrawingWindowController
 
@@ -17,6 +18,11 @@
 @synthesize lineWidth;
 @synthesize lineMinWidth;
 @synthesize lineMaxWidth;
+@synthesize fontFamily;
+@synthesize fontSize;
+@synthesize bold;
+@synthesize italic;
+@synthesize underline;
 @synthesize currentTool;
 @synthesize toolList;
 
@@ -48,17 +54,46 @@
 
 - (void)changeCurrentToolWithString:(NSString*)string {
     
+    if ([self.currentTool.description isEqualToString:string] == YES) { //NO Change
+        return;
+    }
+    
+    if ([string isEqualToString:kTextToolbarItemID]) {
+        [ib_toolbar removeItemAtIndex:[self lineWidthOrFontItemIndex]];
+        [ib_toolbar insertItemWithItemIdentifier:kFontToolbarItemID atIndex:[self lineWidthOrFontItemIndex]];
+    }
+    else {
+        if ([self.currentTool.description isEqualToString:kTextToolbarItemID]) {
+            [ib_toolbar removeItemAtIndex:[self lineWidthOrFontItemIndex]];
+            [ib_toolbar insertItemWithItemIdentifier:kLineWidthToolbarItemID atIndex:[self lineWidthOrFontItemIndex]];
+        }
+    }
+    
     [currentTool removeObserverWithWindowController:self];
     
     self.currentTool = [toolList objectForKey:string];
     
     self.foregroundColor    = self.currentTool.foregroundColor;
     self.backgroundColor    = self.currentTool.backgroundColor;
-    self.lineWidth          = self.currentTool.lineWidth;
-    self.lineMinWidth       = self.currentTool.lineMinWidth;
-    self.lineMaxWidth       = self.currentTool.lineMaxWidth;
+    if ([string isEqualToString:kTextToolbarItemID]) {
+        TextTool *textTool = (TextTool*)self.currentTool;
+        self.fontFamily = textTool.fontFamily;
+        self.fontSize   = textTool.fontSize;
+        self.bold       = textTool.bold;
+        self.italic     = textTool.italic;
+        self.underline  = textTool.underline;
+    }
+    else {
+        self.lineWidth          = self.currentTool.lineWidth;
+        self.lineMinWidth       = self.currentTool.lineMinWidth;
+        self.lineMaxWidth       = self.currentTool.lineMaxWidth;
+    }
     
     [currentTool addObserverWithWindowController:self];
+}
+
+- (NSUInteger)lineWidthOrFontItemIndex {
+    return [[self toolbarItems] indexOfObject:NSToolbarSeparatorItemIdentifier] + 1;
 }
 
 #pragma mark - Toolbar Item Actions
@@ -78,7 +113,7 @@
                                         kLineToolbarItemID, kRectangleToolbarItemID, kEllipseToolbarItemID,
                                         kTextToolbarItemID, kEraserToolbarItemID, kCleanToolbarItemID,
                                         NSToolbarSeparatorItemIdentifier,
-                                        kLineWidthToolbarItemID, kFontToolbarItemID, kColorsToolbarItemID,
+                                        kColorsToolbarItemID, kLineWidthToolbarItemID,
             nil];
 }
 
@@ -98,8 +133,9 @@
                                       target:(id)target
                                  itemContent:(id)imageOrView
                                       action:(SEL)action
+                                        item:(NSToolbarItem*)anItem
 {
-    NSToolbarItem *item = [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease];
+    NSToolbarItem *item = (anItem == nil) ? [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease] :anItem;
     
     [item setLabel:         label];
     [item setPaletteLabel:  paletteLabel];
@@ -120,6 +156,43 @@
     return item;
 }
 
+- (NSToolbarItem*)initToolbarItemWithIdentifier:(NSString*)itemIdentifier item:(NSToolbarItem*)anItem {
+    
+    NSToolbarItem *toolbarItem = nil;
+    
+    if ([itemIdentifier isEqualToString:kLineWidthToolbarItemID]) {
+        toolbarItem = [self toolbarItemWithIdentifier:kLineWidthToolbarItemID
+                                                label:@"Stroke"
+                                          paleteLabel:@"Stroke"
+                                              toolTip:@"Change the bound width"
+                                               target:self
+                                          itemContent:ib_strokeView
+                                               action:nil
+                                                 item:anItem];
+    }
+    else if ([itemIdentifier isEqualToString:kColorsToolbarItemID]) {
+        toolbarItem = [self toolbarItemWithIdentifier:kColorsToolbarItemID
+                                                label:@"Colors"
+                                          paleteLabel:@"Colors"
+                                              toolTip:@"Change the foreground/background color"
+                                               target:self
+                                          itemContent:ib_colorsView
+                                               action:nil
+                                                 item:anItem];
+    }
+    else if ([itemIdentifier isEqualToString:kFontToolbarItemID]) {
+        toolbarItem = [self toolbarItemWithIdentifier:kFontToolbarItemID
+                                                label:@"Font"
+                                          paleteLabel:@"Font"
+                                              toolTip:@"Change the font of text"
+                                               target:self
+                                          itemContent:ib_fontView
+                                               action:nil
+                                                 item:anItem];
+    }
+    
+    return toolbarItem;
+}
 
 #pragma mark - Toolbar Delegates
 
@@ -137,37 +210,14 @@
 
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag {
     
-    NSToolbarItem *toolbarItem = nil;
+    return [self initToolbarItemWithIdentifier:itemIdentifier item:nil];
+}
+
+- (void)toolbarWillAddItem:(NSNotification *)notification {
     
-    if ([itemIdentifier isEqualToString:kLineWidthToolbarItemID]) {
-        toolbarItem = [self toolbarItemWithIdentifier:kLineWidthToolbarItemID
-                                                label:@"Stroke"
-                                          paleteLabel:@"Stroke"
-                                              toolTip:@"Change the line width"
-                                               target:self
-                                          itemContent:ib_strokeView
-                                               action:nil];
-    }
-    else if ([itemIdentifier isEqualToString:kColorsToolbarItemID]) {
-        toolbarItem = [self toolbarItemWithIdentifier:kColorsToolbarItemID
-                                                label:@"Colors"
-                                          paleteLabel:@"Colors"
-                                              toolTip:@"Change the foreground/background color"
-                                               target:self
-                                          itemContent:ib_colorsView
-                                               action:nil];
-    }
-    else if ([itemIdentifier isEqualToString:kFontToolbarItemID]) {
-        toolbarItem = [self toolbarItemWithIdentifier:kFontToolbarItemID
-                                                label:@"Font"
-                                          paleteLabel:@"Font"
-                                              toolTip:@"Change the font of text"
-                                               target:self
-                                          itemContent:ib_fontView
-                                               action:nil];
-    }
+    NSToolbarItem *addedItem = [[notification userInfo] objectForKey:@"item"];
     
-    return toolbarItem;
+    [self initToolbarItemWithIdentifier:[addedItem itemIdentifier] item:addedItem];
 }
 
 @end

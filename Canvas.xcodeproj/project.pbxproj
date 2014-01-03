@@ -16,6 +16,7 @@
 		B5CF7E2A187537E000B26686 /* LineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E29187537E000B26686 /* LineTool.m */; };
 		B5CF7E3018753DE100B26686 /* HighLighterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E2F18753DE100B26686 /* HighLighterTool.m */; };
 		B5CF7E331875524D00B26686 /* EraserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E321875524D00B26686 /* EraserTool.m */; };
+		B5CF7E36187561A300B26686 /* TextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E35187561A300B26686 /* TextTool.m */; };
 		B5E709F4186BB61B0047A4B2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E709F3186BB61B0047A4B2 /* Cocoa.framework */; };
 		B5E709FE186BB61B0047A4B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5E709FC186BB61B0047A4B2 /* InfoPlist.strings */; };
 		B5E70A00186BB61B0047A4B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E709FF186BB61B0047A4B2 /* main.m */; };
@@ -49,6 +50,8 @@
 		B5CF7E2F18753DE100B26686 /* HighLighterTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighLighterTool.m; path = Model/HighLighterTool.m; sourceTree = "<group>"; };
 		B5CF7E311875524D00B26686 /* EraserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EraserTool.h; path = Model/EraserTool.h; sourceTree = "<group>"; };
 		B5CF7E321875524D00B26686 /* EraserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EraserTool.m; path = Model/EraserTool.m; sourceTree = "<group>"; };
+		B5CF7E34187561A300B26686 /* TextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextTool.h; path = Model/TextTool.h; sourceTree = "<group>"; };
+		B5CF7E35187561A300B26686 /* TextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextTool.m; path = Model/TextTool.m; sourceTree = "<group>"; };
 		B5E709F0186BB61B0047A4B2 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E709F3186BB61B0047A4B2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B5E709F6186BB61B0047A4B2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +109,8 @@
 				B5CF7E17186D673700B26686 /* PenTool.m */,
 				B5CF7E19186D6E8400B26686 /* RectangleTool.h */,
 				B5CF7E1A186D6E8400B26686 /* RectangleTool.m */,
+				B5CF7E34187561A300B26686 /* TextTool.h */,
+				B5CF7E35187561A300B26686 /* TextTool.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				B5E70A36186BC58A0047A4B2 /* ImageDataSource.m in Sources */,
 				B5CF7E15186D4FBF00B26686 /* DrawingTool.m in Sources */,
 				B5CF7E18186D673700B26686 /* PenTool.m in Sources */,
+				B5CF7E36187561A300B26686 /* TextTool.m in Sources */,
 				B5E70A2E186BB7520047A4B2 /* DrawingBoardController.m in Sources */,
 				B5E70A3A186BC6A70047A4B2 /* ImageTools.m in Sources */,
 				B5E70A00186BB61B0047A4B2 /* main.m in Sources */,

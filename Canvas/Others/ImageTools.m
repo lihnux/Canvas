@@ -71,8 +71,7 @@ void GCUnlockBitmapImage(NSBitmapImageRep *bitmapImage) {
 		[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeSourceOver];
 	else
 		[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
-	CGContextDrawImage([[NSGraphicsContext currentContext] graphicsPort],
-					   CGRectMake(point.x, point.y, [src pixelsWide], [src pixelsHigh]), [src CGImage]);
+	CGContextDrawImage([[NSGraphicsContext currentContext] graphicsPort], CGRectMake(point.x, point.y, [src pixelsWide], [src pixelsHigh]), [src CGImage]);
 	[NSGraphicsContext restoreGraphicsState];
 }
 
