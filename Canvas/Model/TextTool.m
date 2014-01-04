@@ -30,7 +30,6 @@
         self.underline  = NO;
         
         textCell = [[NSTextFieldCell alloc] initTextCell:@""];
-        //[textCell setEditable:YES];
         textView = [[NSText alloc] init];
     }
     return self;
@@ -136,16 +135,48 @@
 }
 
 #pragma mark - Draw the string
+
+NSAttributedString* applyParaStyle(
+                                   CFStringRef fontName , CGFloat pointSize,
+                                   NSString *plainText, CGFloat lineSpaceInc){
+    
+    // Create the font so we can determine its height.
+    CTFontRef font = CTFontCreateWithName(fontName, pointSize, NULL);
+    
+    // Set the lineSpacing.
+    CGFloat lineSpacing = (CTFontGetLeading(font) + lineSpaceInc) * 2;
+    
+    // Create the paragraph style settings.
+    CTParagraphStyleSetting setting;
+    
+    setting.spec = kCTParagraphStyleSpecifierLineSpacing;
+    setting.valueSize = sizeof(CGFloat);
+    setting.value = &lineSpacing;
+    
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(&setting, 1);
+    
+    // Add the paragraph style to the dictionary.
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                (__bridge id)font, (id)kCTFontNameAttribute,
+                                (__bridge id)paragraphStyle,
+                                (id)kCTParagraphStyleAttributeName, nil];
+    CFRelease(font);
+    CFRelease(paragraphStyle);
+    
+    // Apply the paragraph style to the string to created the attributed string.
+    NSAttributedString* attrString = [[NSAttributedString alloc]
+                                      initWithString:(NSString*)plainText
+                                      attributes:attributes];
+    
+    return attrString;
+}
+
 - (void)drawWithString:(NSString *)string {
     
     @autoreleasepool {
         NSDictionary            *attributes     = [[[NSMutableDictionary alloc] init] autorelease];
-        //NSMutableParagraphStyle *paragrahStyle  = [[[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         NSFontManager           *fontManager    = [NSFontManager sharedFontManager];
         NSFont                  *font           = nil;
-        
-        //paragrahStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        //[attributes setValue:paragrahStyle forKey:NSParagraphStyleAttributeName];
         
         NSUInteger fontMask = 0;
         if (bold) {
@@ -158,14 +189,16 @@
         
         font = [fontManager fontWithFamily:fontFamily traits:fontMask weight:0 size:[fontSize floatValue]];
         
+        [attributes setValue:font forKey:NSFontAttributeName];
         [attributes setValue:foregroundColor forKey:NSForegroundColorAttributeName];
         [attributes setValue:backgroundColor forKey:NSBackgroundColorAttributeName];
         [attributes setValue:[NSNumber numberWithBool:underline] forKey:NSUnderlineStyleAttributeName];
         
         GCLockBitmapImage(drawToImage);
-        
-		[string drawAtPoint:lastPoint withAttributes:attributes];
-        
+        CGContextTranslateCTM([[NSGraphicsContext currentContext] graphicsPort], 0, canvas.frame.size.height);
+        CGContextScaleCTM([[NSGraphicsContext currentContext] graphicsPort], 1.0, -1.0);
+        [string drawAtPoint:NSMakePoint(lastPoint.x, canvas.frame.size.height - lastPoint.y - [string sizeWithAttributes:attributes].height) withAttributes:attributes];
+        //[string drawWithRect:NSMakeRect(lastPoint.x, canvas.frame.size.height - lastPoint.y, 300, 40) options:NSLineBreakByWordWrapping attributes:attributes];
         GCUnlockBitmapImage(drawToImage);
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EC7F7BE2-FDA2-4A53-8B15-245251CEEA62</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Canvas</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>40E3DCA4-7BCC-4DA2-B655-8B11F67C1F8E</key>
+		<string>https://github.com/lihnux/Canvas.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Canvas.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>40E3DCA4-7BCC-4DA2-B655-8B11F67C1F8E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lihnux/Canvas.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>40E3DCA4-7BCC-4DA2-B655-8B11F67C1F8E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>40E3DCA4-7BCC-4DA2-B655-8B11F67C1F8E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Canvas</string>
+		</dict>
+	</array>
+</dict>
+</plist>

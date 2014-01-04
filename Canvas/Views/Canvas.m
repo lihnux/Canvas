@@ -104,25 +104,4 @@
     [self setNeedsDisplay:YES];
 }
 
-#pragma mark - Key Event
-- (void)keyDown:(NSEvent *)theEvent {
-    
-    NSString *chars = theEvent.charactersIgnoringModifiers;
-    unichar aChar = [chars characterAtIndex: 0];
-    
-    switch (aChar) {
-        case 3:
-        case 13: // Enter Key Event
-            break;
-        case 127: // Delete Key Event
-            break;
-        default:
-            break;
-    }
-    
-    NSLog(@"Key down");
-    
-}
-
-
 @end

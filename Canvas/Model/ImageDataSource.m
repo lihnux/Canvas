@@ -53,8 +53,7 @@
 	
 	// If there's an overlay image being used at the moment, draw it
 	if (bufferImage) {
-		NSRect rect = (NSRect){ NSZeroPoint, [bufferImage size] };
-		CGContextDrawImage(context, NSRectToCGRect(rect), [bufferImage CGImage]);
+		CGContextDrawImage(context, NSRectToCGRect((NSRect){NSZeroPoint, [bufferImage size]}), [bufferImage CGImage]);
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
