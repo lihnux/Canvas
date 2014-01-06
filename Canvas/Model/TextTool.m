@@ -20,7 +20,7 @@
 
 - (id)init {
     
-    self = [super init];
+    self = [super initWithForegroundColor:nil backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.0]];
     
     if (self) {
         self.fontFamily = @"Arial";
@@ -194,12 +194,11 @@ NSAttributedString* applyParaStyle(
         [attributes setValue:backgroundColor forKey:NSBackgroundColorAttributeName];
         [attributes setValue:[NSNumber numberWithBool:underline] forKey:NSUnderlineStyleAttributeName];
         
-        GCLockBitmapImage(drawToImage);
+        GCLockBitmapImage(mainImage);
         CGContextTranslateCTM([[NSGraphicsContext currentContext] graphicsPort], 0, canvas.frame.size.height);
         CGContextScaleCTM([[NSGraphicsContext currentContext] graphicsPort], 1.0, -1.0);
         [string drawAtPoint:NSMakePoint(lastPoint.x, canvas.frame.size.height - lastPoint.y - [string sizeWithAttributes:attributes].height) withAttributes:attributes];
-        //[string drawWithRect:NSMakeRect(lastPoint.x, canvas.frame.size.height - lastPoint.y, 300, 40) options:NSLineBreakByWordWrapping attributes:attributes];
-        GCUnlockBitmapImage(drawToImage);
+        GCUnlockBitmapImage(mainImage);
     }
 }
 
@@ -211,12 +210,12 @@ NSAttributedString* applyParaStyle(
 }
 
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)mainImage
-						 bufferImage:(NSBitmapImageRep *)bufferImage
+					   withMainImage:(NSBitmapImageRep *)aMainImage
+						 bufferImage:(NSBitmapImageRep *)aBufferImage
 						  mouseEvent:(UInt8)mouseEvent
                                 view:(NSView*)fromView {
     
-    if (mouseEvent == mouseUpEvent) { //begin to input the text after clicking once
+    if (mouseEvent == mouseUpEvent && drawing == NO) { //begin to input the text after clicking once
         [textCell setTitle:@""];
         
         NSFont *font = [NSFont fontWithName:fontFamily size:[fontSize floatValue]];
@@ -226,21 +225,31 @@ NSAttributedString* applyParaStyle(
         [textView setBackgroundColor:[NSColor lightGrayColor]];
         [textView setDrawsBackground:YES];
         
-        drawToImage = mainImage;
+        mainImage   = aMainImage;
+        bufferImage = aBufferImage;
         lastPoint   = point;
         canvas      = fromView;
+        
+        drawing     = YES;
     }
     
     return nil;
 }
 
+- (void)finishDrawing {
+    if (drawing) {
+        drawing = NO;
+        [textCell endEditing:textView];
+        
+        [self drawWithString:textView.string];
+        [canvas setNeedsDisplay:YES];
+    }
+}
+
 #pragma mark - NSText Delegate
 
 - (void)textDidEndEditing:(NSNotification *)notification {
-    [textCell endEditing:textView];
-    
-    [self drawWithString:textView.string];
-    [canvas setNeedsDisplay:YES];
+    [self finishDrawing];
 }
 
 @end

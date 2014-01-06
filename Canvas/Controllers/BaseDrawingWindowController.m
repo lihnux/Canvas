@@ -69,6 +69,8 @@
         }
     }
     
+    [currentTool finishDrawing];
+    
     [currentTool removeObserverWithWindowController:self];
     
     self.currentTool = [toolList objectForKey:string];

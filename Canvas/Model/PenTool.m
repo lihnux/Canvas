@@ -38,19 +38,26 @@
 }
 
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)mainImage
-						 bufferImage:(NSBitmapImageRep *)bufferImage
+					   withMainImage:(NSBitmapImageRep *)aMainImage
+						 bufferImage:(NSBitmapImageRep *)aBufferImage
 						  mouseEvent:(UInt8)mouseEvent
                                 view:(NSView*)fromView {
+    
+    mainImage   = aMainImage;
+    bufferImage = aBufferImage;
+    canvas      = fromView;
 	
 	if (mouseEvent == mouseUpEvent) {
 		[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];
         [ImageTools clearBitmapImage:bufferImage];
         
+        drawing = NO;
+        
 		[path release];
 		path = nil;
 	}
 	else {
+        drawing = YES;
         GCLockBitmapImage(bufferImage);
 		
 		[ImageTools clearBitmapImage:bufferImage];

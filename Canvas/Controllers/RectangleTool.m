@@ -36,12 +36,17 @@
 }
 
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)mainImage
-						 bufferImage:(NSBitmapImageRep *)bufferImage
+					   withMainImage:(NSBitmapImageRep *)aMainImage
+						 bufferImage:(NSBitmapImageRep *)aBufferImage
 						  mouseEvent:(UInt8)mouseEvent
                                 view:(NSView*)fromView{
     
     @autoreleasepool {
+        
+        mainImage   = aMainImage;
+        bufferImage = aBufferImage;
+        canvas      = fromView;
+        
         [ImageTools clearBitmapImage:bufferImage];
         
         NSBitmapImageRep *drawToImage = nil;
@@ -56,7 +61,11 @@
         GCLockBitmapImage(drawToImage);
         
         if (mouseEvent == mouseDownEvent) {
-            lastPoint = point;
+            lastPoint   = point;
+            drawing     = YES;
+        }
+        else {
+            drawing     = NO;
         }
         
         [self pathFromPoint:lastPoint toPoint:point];

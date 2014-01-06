@@ -91,4 +91,13 @@
 	}
 }
 
+- (void)finishDrawing {
+    if (drawing) {
+        [self performDrawAtPoint:lastPoint withMainImage:mainImage bufferImage:bufferImage mouseEvent:mouseUpEvent view:canvas];
+        [canvas setNeedsDisplay:YES];
+        
+        drawing = NO;
+    }
+}
+
 @end

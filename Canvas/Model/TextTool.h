@@ -15,9 +15,6 @@
     BOOL        italic;
     BOOL        underline;
     
-    NSBitmapImageRep    *drawToImage;
-    NSView              *canvas;
-    
     NSTextFieldCell *textCell;
     NSText          *textView;
 }

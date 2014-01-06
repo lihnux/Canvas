@@ -42,16 +42,22 @@ enum {
 };
 
 @interface DrawingTool : NSObject {
-    NSColor     *foregroundColor;
-    NSColor     *backgroundColor;
+    NSColor             *foregroundColor;
+    NSColor             *backgroundColor;
     
-    NSUInteger  lineWidth;
-    NSUInteger  lineMinWidth;
-    NSUInteger  lineMaxWidth;
+    NSUInteger          lineWidth;
+    NSUInteger          lineMinWidth;
+    NSUInteger          lineMaxWidth;
     
-    NSBezierPath *path;
+    NSBitmapImageRep    *mainImage;
+    NSBitmapImageRep    *bufferImage;
+    NSView              *canvas;
     
-    NSPoint lastPoint;
+    NSBezierPath        *path;
+    
+    NSPoint             lastPoint;
+    
+    BOOL                drawing;
 }
 
 @property (nonatomic, strong) NSColor       *foregroundColor;
@@ -66,13 +72,15 @@ enum {
 - (void)addObserverWithWindowController:(BaseDrawingWindowController*)controller;
 - (void)removeObserverWithWindowController:(BaseDrawingWindowController*)controller;
 
+- (void)finishDrawing;
+
 @end
 
 @interface DrawingTool (Abstract)
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end;
 - (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)mainImage
-						 bufferImage:(NSBitmapImageRep *)bufferImage
+					   withMainImage:(NSBitmapImageRep *)aMainImage
+						 bufferImage:(NSBitmapImageRep *)aBufferImage
 						  mouseEvent:(UInt8)mouseEvent
                                 view:(NSView*)fromView;
 @end
