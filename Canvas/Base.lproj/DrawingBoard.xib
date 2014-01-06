@@ -78,7 +78,7 @@
                             <action selector="onToolToggle:" target="-2" id="pl1-tA-NH3"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="50DAE6CE-F3E0-4124-A849-42BF19BA73F7" explicitItemIdentifier="Text" label="Text" paletteLabel="Text" toolTip="Text" tag="-1" image="NSActionTemplate" id="Id5-Ls-WjR">
+                    <toolbarItem implicitItemIdentifier="50DAE6CE-F3E0-4124-A849-42BF19BA73F7" explicitItemIdentifier="Text" label="Text" paletteLabel="Text" toolTip="Text (double click to input the text)" tag="-1" image="NSActionTemplate" id="Id5-Ls-WjR">
                         <connections>
                             <action selector="onToolToggle:" target="-2" id="zir-4d-npJ"/>
                         </connections>

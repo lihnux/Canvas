@@ -26,15 +26,6 @@
 
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
     
-    /*
-    if (path == nil) {
-        path = [[NSBezierPath alloc] init];
-        [path setLineWidth:lineWidth];
-        [path setLineCapStyle:NSRoundLineCapStyle];
-        [path setLineJoinStyle:NSRoundLineJoinStyle];
-    }
-    */
-    
     path = [NSBezierPath bezierPath];
     [path setLineWidth:lineWidth];
     [path setLineCapStyle:NSRoundLineCapStyle];
@@ -46,24 +37,23 @@
 	return path;
 }
 
-- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)aMainImage
-						 bufferImage:(NSBitmapImageRep *)aBufferImage
-						  mouseEvent:(UInt8)mouseEvent
-                                view:(NSView*)fromView {
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
+                         withMainImage:(NSBitmapImageRep *)aMainImage
+                           bufferImage:(NSBitmapImageRep *)aBufferImage
+                                  view:(NSView*)fromView {
     
     mainImage   = aMainImage;
     bufferImage = aBufferImage;
     canvas      = fromView;
     
+    NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
+    
     NSBitmapImageRep *drawToImage = mainImage;
     
-    if (mouseEvent == mouseUpEvent) {
+    if (event.type == NSLeftMouseUp) {
         drawing = NO;
-        //[path release];
-        //path = nil;
     }
-    else if (mouseEvent == mouseDownEvent){
+    else if (event.type == NSLeftMouseDown){
         drawing = YES;
         lastPoint = point;
     }

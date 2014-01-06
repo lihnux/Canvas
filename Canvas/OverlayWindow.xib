@@ -73,7 +73,7 @@
                             <action selector="onToolToggle:" target="HLW-uk-lIK" id="ZNu-i3-FhD"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="BCE66B9C-3CD3-4B14-ABEC-914AC1CA197B" explicitItemIdentifier="Text" label="Text" paletteLabel="Text" toolTip="Text" tag="-1" image="NSActionTemplate" id="wWl-Fb-2RE">
+                    <toolbarItem implicitItemIdentifier="BCE66B9C-3CD3-4B14-ABEC-914AC1CA197B" explicitItemIdentifier="Text" label="Text" paletteLabel="Text" toolTip="Text (double click to input the text)" tag="-1" image="NSActionTemplate" id="wWl-Fb-2RE">
                         <connections>
                             <action selector="onToolToggle:" target="HLW-uk-lIK" id="Cc8-OF-8Mp"/>
                         </connections>

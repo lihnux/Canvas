@@ -35,11 +35,10 @@
 	return path;
 }
 
-- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)aMainImage
-						 bufferImage:(NSBitmapImageRep *)aBufferImage
-						  mouseEvent:(UInt8)mouseEvent
-                                view:(NSView*)fromView{
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
+                         withMainImage:(NSBitmapImageRep *)aMainImage
+                           bufferImage:(NSBitmapImageRep *)aBufferImage
+                                  view:(NSView*)fromView {
     
     @autoreleasepool {
         
@@ -47,12 +46,20 @@
         bufferImage = aBufferImage;
         canvas      = fromView;
         
+        NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
+        
         [ImageTools clearBitmapImage:bufferImage];
         
         NSBitmapImageRep *drawToImage = nil;
         
-        if (mouseEvent == mouseUpEvent) {
+        if (event.type == NSLeftMouseUp) {
             drawToImage = mainImage;
+            drawing     = NO;
+        }
+        else if (event.type == NSLeftMouseDown) {
+            drawToImage = bufferImage;
+            lastPoint   = point;
+            drawing     = YES;
         }
         else {
             drawToImage = bufferImage;
@@ -60,18 +67,10 @@
         
         GCLockBitmapImage(drawToImage);
         
-        if (mouseEvent == mouseDownEvent) {
-            lastPoint   = point;
-            drawing     = YES;
-        }
-        else {
-            drawing     = NO;
-        }
-        
-        [self pathFromPoint:lastPoint toPoint:point];
-        
         [foregroundColor setStroke];
         [backgroundColor setFill];
+        
+        [self pathFromPoint:lastPoint toPoint:point];
         
         [path stroke];
         [path fill];

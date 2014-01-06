@@ -174,29 +174,27 @@
     return nil;
 }
 
-- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)aMainImage
-						 bufferImage:(NSBitmapImageRep *)aBufferImage
-						  mouseEvent:(UInt8)mouseEvent
-                                view:(NSView*)fromView {
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
+                         withMainImage:(NSBitmapImageRep *)aMainImage
+                           bufferImage:(NSBitmapImageRep *)aBufferImage
+                                  view:(NSView*)fromView {
     
-    if (mouseEvent == mouseUpEvent && drawing == NO) { //begin to input the text after clicking once
+    if (event.type == NSLeftMouseUp && event.clickCount > 1 && drawing == NO) { //begin to input the text after clicking twice
         
         mainImage   = aMainImage;
         bufferImage = aBufferImage;
-        lastPoint   = point;
+        lastPoint   = [fromView convertPoint:[event locationInWindow] fromView:nil];
         canvas      = fromView;
         drawing     = YES;
         
         [textCell setTitle:@""];
         
         NSFont *font = [NSFont fontWithName:fontFamily size:[fontSize floatValue]];
-        [textCell editWithFrame:NSMakeRect(point.x, point.y, [[fromView superview] frame].size.width - point.x - 5, 40) inView:fromView editor:textView delegate:self event:nil];
+        [textCell editWithFrame:NSMakeRect(lastPoint.x, lastPoint.y, [[fromView superview] frame].size.width - lastPoint.x - 5, 40) inView:fromView editor:textView delegate:self event:nil];
         [textView setEditable:YES];
         [textView setFont:font];
         [textView setBackgroundColor:[NSColor lightGrayColor]];
         [textView setDrawsBackground:YES];
-        //[canvas.window makeFirstResponder:textView];
     }
     
     return nil;

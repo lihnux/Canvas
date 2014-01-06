@@ -37,17 +37,18 @@
 	return path;
 }
 
-- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
-					   withMainImage:(NSBitmapImageRep *)aMainImage
-						 bufferImage:(NSBitmapImageRep *)aBufferImage
-						  mouseEvent:(UInt8)mouseEvent
-                                view:(NSView*)fromView {
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
+                         withMainImage:(NSBitmapImageRep *)aMainImage
+                           bufferImage:(NSBitmapImageRep *)aBufferImage
+                                  view:(NSView*)fromView {
     
     mainImage   = aMainImage;
     bufferImage = aBufferImage;
     canvas      = fromView;
+    
+    NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
 	
-	if (mouseEvent == mouseUpEvent) {
+	if (event.type == NSLeftMouseUp) {
 		[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];
         [ImageTools clearBitmapImage:bufferImage];
         
@@ -67,7 +68,7 @@
         
         [foregroundColor setStroke];
         
-        if (mouseEvent == mouseDownEvent) {
+        if (event.type == NSLeftMouseDown) {
             lastPoint   = point;
             drawing     = YES;
         }

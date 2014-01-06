@@ -78,9 +78,8 @@ enum {
 
 @interface DrawingTool (Abstract)
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end;
-- (NSBezierPath *)performDrawAtPoint:(NSPoint)point
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
 					   withMainImage:(NSBitmapImageRep *)aMainImage
 						 bufferImage:(NSBitmapImageRep *)aBufferImage
-						  mouseEvent:(UInt8)mouseEvent
                                 view:(NSView*)fromView;
 @end

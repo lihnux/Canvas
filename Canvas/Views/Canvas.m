@@ -65,45 +65,29 @@
 
 #pragma mark - Mouse Events
 
-- (void)mouseDown:(NSEvent *)event
-{
-	NSPoint p = [event locationInWindow];
-	NSPoint downPoint = [self convertPoint:p fromView:nil];
-	
-	// If it's shifted, do something about it
-	[controller.currentTool performDrawAtPoint:downPoint
-                                 withMainImage:imageDataSource.mainImage
-                                   bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseDownEvent
-                                          view:self];
+- (void)mouseDown:(NSEvent *)event {
+	[controller.currentTool performDrawWithEvent:event
+                                   withMainImage:imageDataSource.mainImage
+                                     bufferImage:imageDataSource.bufferImage
+                                            view:self];
     
     [self setNeedsDisplay:YES];
 }
 
-- (void)mouseDragged:(NSEvent *)event
-{
-    NSPoint p = [event locationInWindow];
-    NSPoint dragPoint = [self convertPoint:p fromView:nil];
-    
-    [controller.currentTool performDrawAtPoint:dragPoint
-                                 withMainImage:imageDataSource.mainImage
-                                   bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseDragEvent
-                                          view:self];
+- (void)mouseDragged:(NSEvent *)event {
+    [controller.currentTool performDrawWithEvent:event
+                                   withMainImage:imageDataSource.mainImage
+                                     bufferImage:imageDataSource.bufferImage
+                                            view:self];
 		
     [self setNeedsDisplay:YES];
 }
 
-- (void)mouseUp:(NSEvent *)event
-{
-    NSPoint p = [event locationInWindow];
-    NSPoint upPoint = [self convertPoint:p fromView:nil];
-    
-    [controller.currentTool performDrawAtPoint:upPoint
-                                 withMainImage:imageDataSource.mainImage
-                                   bufferImage:imageDataSource.bufferImage
-                                    mouseEvent:mouseUpEvent
-                                          view:self];
+- (void)mouseUp:(NSEvent *)event {
+    [controller.currentTool performDrawWithEvent:event
+                                   withMainImage:imageDataSource.mainImage
+                                     bufferImage:imageDataSource.bufferImage
+                                            view:self];
     
     
     [self setNeedsDisplay:YES];
