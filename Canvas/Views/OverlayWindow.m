@@ -7,15 +7,14 @@
 //
 
 #import "OverlayWindow.h"
+#import "OverlayWindowController.h"
 
 @implementation OverlayWindow
 
-- (BOOL)becomeFirstResponder {
-    return YES;
-}
-
-- (BOOL)ignoresMouseEvents {
-    return YES;
+- (BOOL)canBecomeKeyWindow {
+    
+    OverlayWindowController *controller = (OverlayWindowController*)self.delegate;
+    return [controller overlayWindowCanBecomeKeyWindow];
 }
 
 @end

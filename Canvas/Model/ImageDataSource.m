@@ -17,13 +17,18 @@
 #pragma mark - Life Cycle
 - (id)initWithSize:(NSSize)aImageSize {
     
+    return [self initWithSize:aImageSize mainImageBackgroundColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0] bufferImageBackgroundColor:nil];
+}
+
+- (id)initWithSize:(NSSize)aImageSize mainImageBackgroundColor:(NSColor*)mainBackgroundColor bufferImageBackgroundColor:(NSColor*)bufferBackgroundColor {
+    
     self = [super init];
     
     if (self) {
         imageSize = aImageSize;
         
-        [ImageTools initBitmapImage:&mainImage      size:imageSize backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        [ImageTools initBitmapImage:&bufferImage    size:imageSize backgroundColor:nil];
+        [ImageTools initBitmapImage:&mainImage      size:imageSize backgroundColor:mainBackgroundColor];
+        [ImageTools initBitmapImage:&bufferImage    size:imageSize backgroundColor:bufferBackgroundColor];
     }
     
     return self;

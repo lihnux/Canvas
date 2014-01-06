@@ -9,11 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 @class DrawingBoardController;
+@class OverlayWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    DrawingBoardController *drawingBoardController;
+    DrawingBoardController  *drawingBoardController;
+    OverlayWindowController *overlayWindowController;
+    
 }
 
-@property (nonatomic, strong) DrawingBoardController *drawingBoardController;
+@property (nonatomic, strong) DrawingBoardController    *drawingBoardController;
+@property (nonatomic, strong) OverlayWindowController   *overlayWindowController;
 
 @end

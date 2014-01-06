@@ -14,9 +14,12 @@
 @interface Canvas : NSView {
     ImageDataSource             *imageDataSource;
     BaseDrawingWindowController *controller;
+    
+    BOOL                        overlay;
 }
 
-@property (nonatomic, assign) ImageDataSource *imageDataSource;
+@property (nonatomic, assign) ImageDataSource   *imageDataSource;
+@property (nonatomic, assign) BOOL              overlay;
 
 - (void)prepareWithImageDataSource:(ImageDataSource*)anImageDataSource controller:(BaseDrawingWindowController*)aController;
 

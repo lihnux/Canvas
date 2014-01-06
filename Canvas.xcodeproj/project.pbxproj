@@ -18,6 +18,11 @@
 		B5CF7E331875524D00B26686 /* EraserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E321875524D00B26686 /* EraserTool.m */; };
 		B5CF7E36187561A300B26686 /* TextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E35187561A300B26686 /* TextTool.m */; };
 		B5CF7E39187A7FF800B26686 /* OverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E38187A7FF800B26686 /* OverlayWindow.m */; };
+		B5CF7E3B187A89F500B26686 /* OverlayWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF7E3A187A89F500B26686 /* OverlayWindow.xib */; };
+		B5CF7E3E187A8A3B00B26686 /* OverlayWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E3D187A8A3B00B26686 /* OverlayWindowController.m */; };
+		B5CF7E42187A8CF500B26686 /* OverlayToolboxController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E41187A8CF500B26686 /* OverlayToolboxController.m */; };
+		B5CF7E45187A951400B26686 /* SelectTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E44187A951400B26686 /* SelectTool.m */; };
+		B5CF7E48187A9DEF00B26686 /* OverlayEraserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E47187A9DEF00B26686 /* OverlayEraserTool.m */; };
 		B5E709F4186BB61B0047A4B2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E709F3186BB61B0047A4B2 /* Cocoa.framework */; };
 		B5E709FE186BB61B0047A4B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5E709FC186BB61B0047A4B2 /* InfoPlist.strings */; };
 		B5E70A00186BB61B0047A4B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E709FF186BB61B0047A4B2 /* main.m */; };
@@ -55,6 +60,15 @@
 		B5CF7E35187561A300B26686 /* TextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextTool.m; path = Model/TextTool.m; sourceTree = "<group>"; };
 		B5CF7E37187A7FF800B26686 /* OverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayWindow.h; path = Views/OverlayWindow.h; sourceTree = "<group>"; };
 		B5CF7E38187A7FF800B26686 /* OverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayWindow.m; path = Views/OverlayWindow.m; sourceTree = "<group>"; };
+		B5CF7E3A187A89F500B26686 /* OverlayWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayWindow.xib; sourceTree = "<group>"; };
+		B5CF7E3C187A8A3B00B26686 /* OverlayWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayWindowController.h; path = Controllers/OverlayWindowController.h; sourceTree = "<group>"; };
+		B5CF7E3D187A8A3B00B26686 /* OverlayWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayWindowController.m; path = Controllers/OverlayWindowController.m; sourceTree = "<group>"; };
+		B5CF7E40187A8CF500B26686 /* OverlayToolboxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayToolboxController.h; path = Controllers/OverlayToolboxController.h; sourceTree = "<group>"; };
+		B5CF7E41187A8CF500B26686 /* OverlayToolboxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayToolboxController.m; path = Controllers/OverlayToolboxController.m; sourceTree = "<group>"; };
+		B5CF7E43187A951400B26686 /* SelectTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTool.h; path = Model/SelectTool.h; sourceTree = "<group>"; };
+		B5CF7E44187A951400B26686 /* SelectTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTool.m; path = Model/SelectTool.m; sourceTree = "<group>"; };
+		B5CF7E46187A9DEF00B26686 /* OverlayEraserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayEraserTool.h; path = Model/OverlayEraserTool.h; sourceTree = "<group>"; };
+		B5CF7E47187A9DEF00B26686 /* OverlayEraserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayEraserTool.m; path = Model/OverlayEraserTool.m; sourceTree = "<group>"; };
 		B5E709F0186BB61B0047A4B2 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E709F3186BB61B0047A4B2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B5E709F6186BB61B0047A4B2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -108,10 +122,14 @@
 				B5CF7E2F18753DE100B26686 /* HighLighterTool.m */,
 				B5CF7E28187537E000B26686 /* LineTool.h */,
 				B5CF7E29187537E000B26686 /* LineTool.m */,
+				B5CF7E46187A9DEF00B26686 /* OverlayEraserTool.h */,
+				B5CF7E47187A9DEF00B26686 /* OverlayEraserTool.m */,
 				B5CF7E16186D673700B26686 /* PenTool.h */,
 				B5CF7E17186D673700B26686 /* PenTool.m */,
 				B5CF7E19186D6E8400B26686 /* RectangleTool.h */,
 				B5CF7E1A186D6E8400B26686 /* RectangleTool.m */,
+				B5CF7E43187A951400B26686 /* SelectTool.h */,
+				B5CF7E44187A951400B26686 /* SelectTool.m */,
 				B5CF7E34187561A300B26686 /* TextTool.h */,
 				B5CF7E35187561A300B26686 /* TextTool.m */,
 			);
@@ -195,6 +213,7 @@
 			children = (
 				B5E70A08186BB61B0047A4B2 /* MainMenu.xib */,
 				B5E70A29186BB7260047A4B2 /* DrawingBoard.xib */,
+				B5CF7E3A187A89F500B26686 /* OverlayWindow.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -208,6 +227,10 @@
 				B5E70A3C186D1D500047A4B2 /* BaseDrawingWindowController.m */,
 				B5E70A2C186BB7520047A4B2 /* DrawingBoardController.h */,
 				B5E70A2D186BB7520047A4B2 /* DrawingBoardController.m */,
+				B5CF7E40187A8CF500B26686 /* OverlayToolboxController.h */,
+				B5CF7E41187A8CF500B26686 /* OverlayToolboxController.m */,
+				B5CF7E3C187A8A3B00B26686 /* OverlayWindowController.h */,
+				B5CF7E3D187A8A3B00B26686 /* OverlayWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -296,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CF7E3B187A89F500B26686 /* OverlayWindow.xib in Resources */,
 				B5E709FE186BB61B0047A4B2 /* InfoPlist.strings in Resources */,
 				B5E70A0C186BB61C0047A4B2 /* Images.xcassets in Resources */,
 				B5CF7E241875325B00B26686 /* bkgImage.png in Resources */,
@@ -322,12 +346,16 @@
 				B5CF7E18186D673700B26686 /* PenTool.m in Sources */,
 				B5CF7E36187561A300B26686 /* TextTool.m in Sources */,
 				B5E70A2E186BB7520047A4B2 /* DrawingBoardController.m in Sources */,
+				B5CF7E3E187A8A3B00B26686 /* OverlayWindowController.m in Sources */,
 				B5E70A3A186BC6A70047A4B2 /* ImageTools.m in Sources */,
 				B5E70A00186BB61B0047A4B2 /* main.m in Sources */,
 				B5E70A3D186D1D500047A4B2 /* BaseDrawingWindowController.m in Sources */,
+				B5CF7E42187A8CF500B26686 /* OverlayToolboxController.m in Sources */,
 				B5CF7E39187A7FF800B26686 /* OverlayWindow.m in Sources */,
 				B5E70A32186BC1D80047A4B2 /* Canvas.m in Sources */,
+				B5CF7E45187A951400B26686 /* SelectTool.m in Sources */,
 				B5CF7E2A187537E000B26686 /* LineTool.m in Sources */,
+				B5CF7E48187A9DEF00B26686 /* OverlayEraserTool.m in Sources */,
 				B5CF7E1B186D6E8400B26686 /* RectangleTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

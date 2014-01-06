@@ -8,14 +8,17 @@
 
 #import "AppDelegate.h"
 #import "DrawingBoardController.h"
+#import "OverlayWindowController.h"
 
 @implementation AppDelegate
 
 @synthesize drawingBoardController;
+@synthesize overlayWindowController;
 
 - (void)dealloc {
     
     [drawingBoardController release];
+    [overlayWindowController release];
     
     [super dealloc];
 }
@@ -23,8 +26,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    self.drawingBoardController = [[DrawingBoardController alloc] init];
-    [drawingBoardController showWindow:self];
+    //self.drawingBoardController = [[DrawingBoardController alloc] init];
+    //[drawingBoardController showWindow:self];
+    self.overlayWindowController = [[OverlayWindowController alloc] init];
+    [overlayWindowController showWindow:self];
     
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
 }

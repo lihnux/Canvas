@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) NSBitmapImageRep *bufferImage;
 
 - (id)initWithSize:(NSSize)aImageSize;
+- (id)initWithSize:(NSSize)aImageSize mainImageBackgroundColor:(NSColor*)mainBackgroundColor bufferImageBackgroundColor:(NSColor*)bufferBackgroundColor;
 
 - (void)renderToContext:(CGContextRef)context withFrame:(NSRect)frame;
 

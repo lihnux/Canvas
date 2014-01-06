@@ -14,6 +14,7 @@
 @implementation Canvas
 
 @synthesize imageDataSource;
+@synthesize overlay;
 
 #pragma mark - Override method
 
@@ -33,8 +34,12 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[super drawRect:dirtyRect];
-	
+	//[super drawRect:dirtyRect];
+    //if (overlay) {
+        [[NSColor clearColor] setFill];
+        NSRectFill(dirtyRect);
+    //}
+    
     if (dirtyRect.size.width != 0 && dirtyRect.size.height != 0)
 	{
 		//CGContextEndTransparencyLayer(cgContext);

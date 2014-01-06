@@ -136,41 +136,6 @@
 
 #pragma mark - Draw the string
 
-NSAttributedString* applyParaStyle(
-                                   CFStringRef fontName , CGFloat pointSize,
-                                   NSString *plainText, CGFloat lineSpaceInc){
-    
-    // Create the font so we can determine its height.
-    CTFontRef font = CTFontCreateWithName(fontName, pointSize, NULL);
-    
-    // Set the lineSpacing.
-    CGFloat lineSpacing = (CTFontGetLeading(font) + lineSpaceInc) * 2;
-    
-    // Create the paragraph style settings.
-    CTParagraphStyleSetting setting;
-    
-    setting.spec = kCTParagraphStyleSpecifierLineSpacing;
-    setting.valueSize = sizeof(CGFloat);
-    setting.value = &lineSpacing;
-    
-    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(&setting, 1);
-    
-    // Add the paragraph style to the dictionary.
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                (__bridge id)font, (id)kCTFontNameAttribute,
-                                (__bridge id)paragraphStyle,
-                                (id)kCTParagraphStyleAttributeName, nil];
-    CFRelease(font);
-    CFRelease(paragraphStyle);
-    
-    // Apply the paragraph style to the string to created the attributed string.
-    NSAttributedString* attrString = [[NSAttributedString alloc]
-                                      initWithString:(NSString*)plainText
-                                      attributes:attributes];
-    
-    return attrString;
-}
-
 - (void)drawWithString:(NSString *)string {
     
     @autoreleasepool {
@@ -216,6 +181,13 @@ NSAttributedString* applyParaStyle(
                                 view:(NSView*)fromView {
     
     if (mouseEvent == mouseUpEvent && drawing == NO) { //begin to input the text after clicking once
+        
+        mainImage   = aMainImage;
+        bufferImage = aBufferImage;
+        lastPoint   = point;
+        canvas      = fromView;
+        drawing     = YES;
+        
         [textCell setTitle:@""];
         
         NSFont *font = [NSFont fontWithName:fontFamily size:[fontSize floatValue]];
@@ -224,13 +196,7 @@ NSAttributedString* applyParaStyle(
         [textView setFont:font];
         [textView setBackgroundColor:[NSColor lightGrayColor]];
         [textView setDrawsBackground:YES];
-        
-        mainImage   = aMainImage;
-        bufferImage = aBufferImage;
-        lastPoint   = point;
-        canvas      = fromView;
-        
-        drawing     = YES;
+        //[canvas.window makeFirstResponder:textView];
     }
     
     return nil;
@@ -238,6 +204,7 @@ NSAttributedString* applyParaStyle(
 
 - (void)finishDrawing {
     if (drawing) {
+        
         drawing = NO;
         [textCell endEditing:textView];
         

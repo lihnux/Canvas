@@ -57,7 +57,7 @@
 		path = nil;
 	}
 	else {
-        drawing = YES;
+        
         GCLockBitmapImage(bufferImage);
 		
 		[ImageTools clearBitmapImage:bufferImage];
@@ -68,7 +68,8 @@
         [foregroundColor setStroke];
         
         if (mouseEvent == mouseDownEvent) {
-            lastPoint = point;
+            lastPoint   = point;
+            drawing     = YES;
         }
         
 		[[self pathFromPoint:lastPoint toPoint:point] stroke];
