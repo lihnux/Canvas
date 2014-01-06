@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Canvas/Views/Canvas.m"
-            timestampString = "410430855.070134"
+            timestampString = "410683697.516131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-acceptsFirstResponder"
             landmarkType = "5">
          </BreakpointContent>

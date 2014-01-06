@@ -17,6 +17,7 @@
 		B5CF7E3018753DE100B26686 /* HighLighterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E2F18753DE100B26686 /* HighLighterTool.m */; };
 		B5CF7E331875524D00B26686 /* EraserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E321875524D00B26686 /* EraserTool.m */; };
 		B5CF7E36187561A300B26686 /* TextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E35187561A300B26686 /* TextTool.m */; };
+		B5CF7E39187A7FF800B26686 /* OverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E38187A7FF800B26686 /* OverlayWindow.m */; };
 		B5E709F4186BB61B0047A4B2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E709F3186BB61B0047A4B2 /* Cocoa.framework */; };
 		B5E709FE186BB61B0047A4B2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5E709FC186BB61B0047A4B2 /* InfoPlist.strings */; };
 		B5E70A00186BB61B0047A4B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E709FF186BB61B0047A4B2 /* main.m */; };
@@ -52,6 +53,8 @@
 		B5CF7E321875524D00B26686 /* EraserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EraserTool.m; path = Model/EraserTool.m; sourceTree = "<group>"; };
 		B5CF7E34187561A300B26686 /* TextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextTool.h; path = Model/TextTool.h; sourceTree = "<group>"; };
 		B5CF7E35187561A300B26686 /* TextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextTool.m; path = Model/TextTool.m; sourceTree = "<group>"; };
+		B5CF7E37187A7FF800B26686 /* OverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayWindow.h; path = Views/OverlayWindow.h; sourceTree = "<group>"; };
+		B5CF7E38187A7FF800B26686 /* OverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayWindow.m; path = Views/OverlayWindow.m; sourceTree = "<group>"; };
 		B5E709F0186BB61B0047A4B2 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E709F3186BB61B0047A4B2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B5E709F6186BB61B0047A4B2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 				B5E70A31186BC1D80047A4B2 /* Canvas.m */,
 				B5CF7E1C18752B4200B26686 /* ColorWell.h */,
 				B5CF7E1D18752B4200B26686 /* ColorWell.m */,
+				B5CF7E37187A7FF800B26686 /* OverlayWindow.h */,
+				B5CF7E38187A7FF800B26686 /* OverlayWindow.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				B5E70A3A186BC6A70047A4B2 /* ImageTools.m in Sources */,
 				B5E70A00186BB61B0047A4B2 /* main.m in Sources */,
 				B5E70A3D186D1D500047A4B2 /* BaseDrawingWindowController.m in Sources */,
+				B5CF7E39187A7FF800B26686 /* OverlayWindow.m in Sources */,
 				B5E70A32186BC1D80047A4B2 /* Canvas.m in Sources */,
 				B5CF7E2A187537E000B26686 /* LineTool.m in Sources */,
 				B5CF7E1B186D6E8400B26686 /* RectangleTool.m in Sources */,
@@ -442,7 +448,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Canvas/Canvas-Prefix.pch";
 				INFOPLIST_FILE = "Canvas/Canvas-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -455,7 +463,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Canvas/Canvas-Prefix.pch";
 				INFOPLIST_FILE = "Canvas/Canvas-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
