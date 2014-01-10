@@ -15,6 +15,8 @@
 @synthesize lineWidth;
 @synthesize lineMinWidth;
 @synthesize lineMaxWidth;
+@synthesize path;
+@synthesize needUpdateToMainLayer;
 
 - (id)init {
     return [self initWithForegroundColor:nil backgroundColor:nil];
@@ -29,6 +31,7 @@
     
     if (self) {
         
+        self.path               = [[NSBezierPath alloc] init];
         self.foregroundColor    = (aForegroundColor == nil) ? [NSColor colorWithCalibratedRed:0.0 green:0.0 blue:0.0 alpha:1.0] : aForegroundColor;
         self.backgroundColor    = (aBackgroundColor == nil) ? [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0] : aBackgroundColor;
         self.lineWidth          = aLineWidth;
@@ -93,6 +96,10 @@
 
 - (void)finishDrawing {
     drawing = NO;
+}
+
+- (void)drawOnView {
+    
 }
 
 @end

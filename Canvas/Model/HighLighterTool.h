@@ -8,6 +8,6 @@
 
 #import "PenTool.h"
 
-@interface HighLighterTool : PenTool
+@interface HighLighterTool : DrawingTool
 
 @end

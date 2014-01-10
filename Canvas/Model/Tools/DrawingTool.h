@@ -58,13 +58,16 @@ enum {
     NSPoint             lastPoint;
     
     BOOL                drawing;
+    BOOL                needUpdateToMainLayer;
 }
 
-@property (nonatomic, strong) NSColor       *foregroundColor;
-@property (nonatomic, strong) NSColor       *backgroundColor;
-@property (nonatomic, assign) NSUInteger    lineWidth;
-@property (nonatomic, assign) NSUInteger    lineMinWidth;
-@property (nonatomic, assign) NSUInteger    lineMaxWidth;
+@property (nonatomic, strong)   NSColor         *foregroundColor;
+@property (nonatomic, strong)   NSColor         *backgroundColor;
+@property (nonatomic, assign)   NSUInteger      lineWidth;
+@property (nonatomic, assign)   NSUInteger      lineMinWidth;
+@property (nonatomic, assign)   NSUInteger      lineMaxWidth;
+@property (nonatomic, strong)   NSBezierPath    *path;
+@property (nonatomic, readonly) BOOL            needUpdateToMainLayer;
 
 - (id)initWithForegroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor;
 - (id)initWithLineWidth:(NSUInteger)aLineWidth lineMinWidth:(NSUInteger)aLineMinWidth lineMaxWidth:(NSUInteger)aLineMaxWidth foregroundColor:(NSColor*)aForegroundColor backgroundColor:(NSColor*)aBackgroundColor;
@@ -74,12 +77,12 @@ enum {
 
 - (void)finishDrawing;
 
+- (void)drawOnView;
+
 @end
 
 @interface DrawingTool (Abstract)
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end;
-- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
-					   withMainImage:(NSBitmapImageRep *)aMainImage
-						 bufferImage:(NSBitmapImageRep *)aBufferImage
-                                view:(NSView*)fromView;
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event view:(NSView*)fromView;
+- (void)drawOnContext;
 @end

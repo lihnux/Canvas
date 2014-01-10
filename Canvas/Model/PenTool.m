@@ -24,12 +24,9 @@
 
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
     
-    if (path == nil) {
-        path = [[NSBezierPath alloc] init];
-        [path setLineWidth:lineWidth];
-        [path setLineCapStyle:NSRoundLineCapStyle];
-        [path setLineJoinStyle:NSRoundLineJoinStyle];
-    }
+    [path setLineWidth:lineWidth];
+    [path setLineCapStyle:NSRoundLineCapStyle];
+    [path setLineJoinStyle:NSRoundLineJoinStyle];
     
 	[path moveToPoint:begin];
 	[path lineToPoint:end];
@@ -37,50 +34,34 @@
 	return path;
 }
 
-- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
-                         withMainImage:(NSBitmapImageRep *)aMainImage
-                           bufferImage:(NSBitmapImageRep *)aBufferImage
-                                  view:(NSView*)fromView {
-    
-    mainImage   = aMainImage;
-    bufferImage = aBufferImage;
-    canvas      = fromView;
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event view:(NSView*)fromView {
     
     NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
+    
+    if (event.type == NSLeftMouseDown) {
+        drawing     = YES;
+        lastPoint   = point;
+    }
 	
 	if (event.type == NSLeftMouseUp) {
-		[ImageTools drawToImage:mainImage fromImage:bufferImage withComposition:YES];
-        [ImageTools clearBitmapImage:bufferImage];
-        
         drawing = NO;
-        
-		[path release];
-		path = nil;
+        needUpdateToMainLayer = YES;
 	}
 	else {
         
-        GCLockBitmapImage(bufferImage);
-		
-		[ImageTools clearBitmapImage:bufferImage];
-		
-		[NSGraphicsContext saveGraphicsState];
-		[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
-        
-        [foregroundColor setStroke];
-        
-        if (event.type == NSLeftMouseDown) {
-            lastPoint   = point;
-            drawing     = YES;
-        }
-        
-		[[self pathFromPoint:lastPoint toPoint:point] stroke];
-		[NSGraphicsContext restoreGraphicsState];
-        
+		[self pathFromPoint:lastPoint toPoint:point];
 		lastPoint = point;
-        
-        GCUnlockBitmapImage(bufferImage);
+        needUpdateToMainLayer = YES;
 	}
 	return nil;
+}
+
+- (void)drawOnContext {
+    [foregroundColor    setStroke];
+    [path               stroke];
+    [path               removeAllPoints];
+    
+    needUpdateToMainLayer = NO;
 }
 
 @end

@@ -20,4 +20,52 @@
     return kHighLighterToolbarItemID;
 }
 
+- (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
+    
+    [path setLineWidth:lineWidth];
+    [path setLineCapStyle:NSRoundLineCapStyle];
+    [path setLineJoinStyle:NSRoundLineJoinStyle];
+    
+	[path moveToPoint:begin];
+	[path lineToPoint:end];
+    
+	return path;
+}
+
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event view:(NSView*)fromView {
+    
+    NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
+    
+    if (event.type == NSLeftMouseDown) {
+        drawing     = YES;
+        lastPoint   = point;
+    }
+	
+	if (event.type == NSLeftMouseUp) {
+        drawing = NO;
+        needUpdateToMainLayer = YES;
+	}
+	else {
+        
+        if (fabsf(lastPoint.x - point.x) > 4.0f && fabsf(lastPoint.y - point.y) > 4.0f) {
+            [self pathFromPoint:lastPoint toPoint:point];
+            lastPoint = point;
+        }
+	}
+	return nil;
+}
+
+- (void)drawOnContext {
+    [foregroundColor    setStroke];
+    [path               stroke];
+    [path               removeAllPoints];
+    
+    needUpdateToMainLayer = NO;
+}
+
+- (void)drawOnView {
+    [foregroundColor setStroke];
+    [path stroke];
+}
+
 @end

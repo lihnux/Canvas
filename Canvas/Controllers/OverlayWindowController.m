@@ -47,9 +47,8 @@
     [ib_overlayToolboxController.window setLevel:NSPopUpMenuWindowLevel];
     [ib_overlayToolboxController.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
     
-    imageDataSource = [[ImageDataSource alloc] initWithSize:[ib_canvas frame].size mainImageBackgroundColor:nil bufferImageBackgroundColor:nil];
-    [ib_canvas prepareWithImageDataSource:imageDataSource controller:ib_overlayToolboxController];
-    [ib_canvas setOverlay:YES];
+    imageDataSource = [[ImageDataSource alloc] initWithSize:ib_canvas.frame.size mainImageBackgroundColor:nil bufferImageBackgroundColor:nil];
+    [ib_canvas prepareWithFrame:ib_canvas.frame.size controller:ib_overlayToolboxController];
     [ib_canvas setNeedsDisplay:YES];
 }
 

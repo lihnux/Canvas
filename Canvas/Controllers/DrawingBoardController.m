@@ -64,7 +64,7 @@
     [ib_toolbar setSelectedItemIdentifier:kPenToolbarItemID];
     
     imageDataSource = [[ImageDataSource alloc] initWithSize:[ib_canvas frame].size];
-    [ib_canvas prepareWithImageDataSource:imageDataSource controller:self];
+    [ib_canvas prepareWithFrame:NSMakeSize(1024, 768) controller:self];
     [ib_canvas setNeedsDisplay:YES];
     
     [self.window center];
@@ -74,7 +74,7 @@
 
 - (IBAction)onClean:(id)sender {
     
-    [ImageTools clearBitmapImage:imageDataSource.mainImage backgroundColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+    [ib_canvas clearMainLayer];
     [ib_canvas setNeedsDisplay:YES];
 }
 

@@ -12,15 +12,12 @@
 @class BaseDrawingWindowController;
 
 @interface Canvas : NSView {
-    ImageDataSource             *imageDataSource;
     BaseDrawingWindowController *controller;
-    
-    BOOL                        overlay;
+    CGLayerRef                  mainLayer;
 }
 
-@property (nonatomic, assign) ImageDataSource   *imageDataSource;
-@property (nonatomic, assign) BOOL              overlay;
+- (void)prepareWithFrame:(NSSize)size controller:(BaseDrawingWindowController*)aController;
 
-- (void)prepareWithImageDataSource:(ImageDataSource*)anImageDataSource controller:(BaseDrawingWindowController*)aController;
+- (void)clearMainLayer;
 
 @end

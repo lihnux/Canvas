@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface ImageDataSource : NSObject {
+    
     NSBitmapImageRep    *mainImage;
     NSBitmapImageRep    *bufferImage;
     
     NSSize              imageSize;
 }
 
-@property (nonatomic, readonly) NSBitmapImageRep *mainImage;
-@property (nonatomic, readonly) NSBitmapImageRep *bufferImage;
+@property (nonatomic, readonly) NSBitmapImageRep    *mainImage;
+@property (nonatomic, readonly) NSBitmapImageRep    *bufferImage;
 
 - (id)initWithSize:(NSSize)aImageSize;
 - (id)initWithSize:(NSSize)aImageSize mainImageBackgroundColor:(NSColor*)mainBackgroundColor bufferImageBackgroundColor:(NSColor*)bufferBackgroundColor;

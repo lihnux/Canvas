@@ -13,9 +13,6 @@
 
 @implementation Canvas
 
-@synthesize imageDataSource;
-@synthesize overlay;
-
 #pragma mark - Override method
 
 - (id)initWithFrame:(NSRect)frame
@@ -29,24 +26,35 @@
 
 - (void)dealloc {
     
+    CGLayerRelease(mainLayer);
+    
     [super dealloc];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	//[super drawRect:dirtyRect];
-    //if (overlay) {
-        [[NSColor clearColor] setFill];
-        NSRectFill(dirtyRect);
-    //}
     
-    if (dirtyRect.size.width != 0 && dirtyRect.size.height != 0)
-	{
-		//CGContextEndTransparencyLayer(cgContext);
-		CGContextRef cgContext = [[NSGraphicsContext currentContext] graphicsPort];
-		
-		[imageDataSource renderToContext:cgContext withFrame:dirtyRect];
-	}
+    if (dirtyRect.size.width == 0 || dirtyRect.size.height == 0) {
+        return;
+    }
+    
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    
+    
+    if (controller.currentTool.needUpdateToMainLayer) {
+        CGContextRef layerContext = CGLayerGetContext(mainLayer);
+        
+        [NSGraphicsContext saveGraphicsState];
+        [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:layerContext flipped:NO]];
+        
+        [controller.currentTool drawOnContext];
+        
+        [NSGraphicsContext restoreGraphicsState];
+    }
+    
+    CGContextDrawLayerAtPoint(context, CGPointMake(0, 0), mainLayer);
+    
+    [controller.currentTool drawOnView];
 }
 
 - (BOOL)isFlipped {
@@ -57,38 +65,46 @@
     return YES;
 }
 
+#pragma mark - Private Methods
+- (void)clearMainLayer {
+
+    if (mainLayer == NULL) {
+        CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+        mainLayer = CGLayerCreateWithContext(context, NSSizeToCGSize(self.frame.size), NULL);
+    }
+    
+    CGContextRef layerContext = CGLayerGetContext(mainLayer);
+    CGContextSetRGBFillColor (layerContext, 1.0, 1.0, 1.0, 1.0);
+    CGContextFillRect(layerContext, CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height));
+}
+
 #pragma mark - Public Methods
-- (void)prepareWithImageDataSource:(ImageDataSource *)anImageDataSource controller:(BaseDrawingWindowController*)aController{
-    self.imageDataSource = anImageDataSource;
+
+- (void)prepareWithFrame:(NSSize)size controller:(BaseDrawingWindowController*)aController {
+    
+    if (self.frame.size.width != size.width && self.frame.size.height != size.height) {
+        self.frame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+    }
+    
     controller = aController;
+    
+    [self clearMainLayer];
 }
 
 #pragma mark - Mouse Events
 
 - (void)mouseDown:(NSEvent *)event {
-	[controller.currentTool performDrawWithEvent:event
-                                   withMainImage:imageDataSource.mainImage
-                                     bufferImage:imageDataSource.bufferImage
-                                            view:self];
-    
-    [self setNeedsDisplay:YES];
+	[controller.currentTool performDrawWithEvent:event view:self];
 }
 
 - (void)mouseDragged:(NSEvent *)event {
-    [controller.currentTool performDrawWithEvent:event
-                                   withMainImage:imageDataSource.mainImage
-                                     bufferImage:imageDataSource.bufferImage
-                                            view:self];
+    [controller.currentTool performDrawWithEvent:event view:self];
 		
     [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)event {
-    [controller.currentTool performDrawWithEvent:event
-                                   withMainImage:imageDataSource.mainImage
-                                     bufferImage:imageDataSource.bufferImage
-                                            view:self];
-    
+    [controller.currentTool performDrawWithEvent:event view:self];
     
     [self setNeedsDisplay:YES];
 }
