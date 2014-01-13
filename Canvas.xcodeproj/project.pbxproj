@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B585842F18837E1A0073C0EA /* ShapeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B585842E18837E1A0073C0EA /* ShapeTool.m */; };
 		B5CF7E15186D4FBF00B26686 /* DrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E14186D4FBF00B26686 /* DrawingTool.m */; };
 		B5CF7E18186D673700B26686 /* PenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E17186D673700B26686 /* PenTool.m */; };
 		B5CF7E1B186D6E8400B26686 /* RectangleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7E1A186D6E8400B26686 /* RectangleTool.m */; };
@@ -39,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B585842D18837E1A0073C0EA /* ShapeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapeTool.h; path = Model/ShapeTool.h; sourceTree = "<group>"; };
+		B585842E18837E1A0073C0EA /* ShapeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapeTool.m; path = Model/ShapeTool.m; sourceTree = "<group>"; };
 		B5CF7E13186D4FBF00B26686 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingTool.h; path = Model/Tools/DrawingTool.h; sourceTree = "<group>"; };
 		B5CF7E14186D4FBF00B26686 /* DrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingTool.m; path = Model/Tools/DrawingTool.m; sourceTree = "<group>"; };
 		B5CF7E16186D673700B26686 /* PenTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenTool.h; path = Model/PenTool.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				B5CF7E1A186D6E8400B26686 /* RectangleTool.m */,
 				B5CF7E43187A951400B26686 /* SelectTool.h */,
 				B5CF7E44187A951400B26686 /* SelectTool.m */,
+				B585842D18837E1A0073C0EA /* ShapeTool.h */,
+				B585842E18837E1A0073C0EA /* ShapeTool.m */,
 				B5CF7E34187561A300B26686 /* TextTool.h */,
 				B5CF7E35187561A300B26686 /* TextTool.m */,
 			);
@@ -337,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5CF7E331875524D00B26686 /* EraserTool.m in Sources */,
+				B585842F18837E1A0073C0EA /* ShapeTool.m in Sources */,
 				B5CF7E271875355000B26686 /* EllipseTool.m in Sources */,
 				B5CF7E3018753DE100B26686 /* HighLighterTool.m in Sources */,
 				B5CF7E1E18752B4200B26686 /* ColorWell.m in Sources */,

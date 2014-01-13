@@ -26,8 +26,13 @@
     [path setLineCapStyle:NSRoundLineCapStyle];
     [path setLineJoinStyle:NSRoundLineJoinStyle];
     
-	[path moveToPoint:begin];
-	[path lineToPoint:end];
+    if (path.elementCount == 0) {
+        [path moveToPoint:begin];
+        [path lineToPoint:end];
+    }
+    else {
+        [path lineToPoint:end];
+    }
     
 	return path;
 }
@@ -40,22 +45,21 @@
         drawing     = YES;
         lastPoint   = point;
     }
-	
-	if (event.type == NSLeftMouseUp) {
+	else if (event.type == NSLeftMouseUp) {
         drawing = NO;
         needUpdateToMainLayer = YES;
 	}
 	else {
         
-        if (fabsf(lastPoint.x - point.x) > 4.0f && fabsf(lastPoint.y - point.y) > 4.0f) {
+        //if (fabsf(lastPoint.x - point.x) > 4.0f && fabsf(lastPoint.y - point.y) > 4.0f) {
             [self pathFromPoint:lastPoint toPoint:point];
             lastPoint = point;
-        }
+        //}
 	}
 	return nil;
 }
 
-- (void)drawOnContext {
+- (void)drawOnMainLayer {
     [foregroundColor    setStroke];
     [path               stroke];
     [path               removeAllPoints];
@@ -67,5 +71,6 @@
     [foregroundColor setStroke];
     [path stroke];
 }
+
 
 @end

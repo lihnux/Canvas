@@ -38,6 +38,9 @@
         return;
     }
     
+    [[NSColor clearColor] setFill];
+    NSRectFill(dirtyRect);
+    
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
     
@@ -47,7 +50,7 @@
         [NSGraphicsContext saveGraphicsState];
         [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:layerContext flipped:NO]];
         
-        [controller.currentTool drawOnContext];
+        [controller.currentTool drawOnMainLayer];
         
         [NSGraphicsContext restoreGraphicsState];
     }
@@ -65,19 +68,6 @@
     return YES;
 }
 
-#pragma mark - Private Methods
-- (void)clearMainLayer {
-
-    if (mainLayer == NULL) {
-        CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-        mainLayer = CGLayerCreateWithContext(context, NSSizeToCGSize(self.frame.size), NULL);
-    }
-    
-    CGContextRef layerContext = CGLayerGetContext(mainLayer);
-    CGContextSetRGBFillColor (layerContext, 1.0, 1.0, 1.0, 1.0);
-    CGContextFillRect(layerContext, CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height));
-}
-
 #pragma mark - Public Methods
 
 - (void)prepareWithFrame:(NSSize)size controller:(BaseDrawingWindowController*)aController {
@@ -89,6 +79,18 @@
     controller = aController;
     
     [self clearMainLayer];
+}
+
+- (void)clearMainLayer {
+    
+    if (mainLayer == NULL) {
+        CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+        mainLayer = CGLayerCreateWithContext(context, NSSizeToCGSize(self.frame.size), NULL);
+    }
+    
+    CGContextRef layerContext = CGLayerGetContext(mainLayer);
+    CGContextSetRGBFillColor (layerContext, 1.0, 1.0, 1.0, 0.0);
+    CGContextFillRect(layerContext, CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height));
 }
 
 #pragma mark - Mouse Events

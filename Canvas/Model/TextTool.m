@@ -17,6 +17,7 @@
 @synthesize bold;
 @synthesize italic;
 @synthesize underline;
+@synthesize drawText;
 
 - (id)init {
     
@@ -174,18 +175,14 @@
     return nil;
 }
 
-- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
-                         withMainImage:(NSBitmapImageRep *)aMainImage
-                           bufferImage:(NSBitmapImageRep *)aBufferImage
-                                  view:(NSView*)fromView {
+- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event view:(NSView*)fromView {
     
     if (event.type == NSLeftMouseUp && event.clickCount > 1 && drawing == NO) { //begin to input the text after clicking twice
-        
-        mainImage   = aMainImage;
-        bufferImage = aBufferImage;
-        lastPoint   = [fromView convertPoint:[event locationInWindow] fromView:nil];
-        canvas      = fromView;
-        drawing     = YES;
+
+        lastPoint       = [fromView convertPoint:[event locationInWindow] fromView:nil];
+        canvas          = fromView;
+        drawing         = YES;
+        self.drawText   = @"";
         
         [textCell setTitle:@""];
         
@@ -197,7 +194,38 @@
         [textView setDrawsBackground:YES];
     }
     
-    return nil;
+	return nil;
+}
+
+- (void)drawOnMainLayer {
+    
+    NSDictionary            *attributes     = [[[NSMutableDictionary alloc] init] autorelease];
+    NSFontManager           *fontManager    = [NSFontManager sharedFontManager];
+    NSFont                  *font           = nil;
+    
+    NSUInteger fontMask = 0;
+    if (bold) {
+        fontMask |= NSBoldFontMask;
+    }
+    
+    if (italic) {
+        fontMask |= NSItalicFontMask;
+    }
+    
+    font = [fontManager fontWithFamily:fontFamily traits:fontMask weight:0 size:[fontSize floatValue]];
+    
+    [attributes setValue:font forKey:NSFontAttributeName];
+    [attributes setValue:foregroundColor forKey:NSForegroundColorAttributeName];
+    [attributes setValue:backgroundColor forKey:NSBackgroundColorAttributeName];
+    [attributes setValue:[NSNumber numberWithBool:underline] forKey:NSUnderlineStyleAttributeName];
+    
+    [[NSGraphicsContext currentContext] saveGraphicsState];
+    CGContextTranslateCTM([[NSGraphicsContext currentContext] graphicsPort], 0, canvas.frame.size.height);
+    CGContextScaleCTM([[NSGraphicsContext currentContext] graphicsPort], 1.0, -1.0);
+    [self.drawText drawAtPoint:NSMakePoint(lastPoint.x, canvas.frame.size.height - lastPoint.y - [self.drawText sizeWithAttributes:attributes].height) withAttributes:attributes];
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
+    
+    needUpdateToMainLayer = NO;
 }
 
 - (void)finishDrawing {
@@ -205,9 +233,12 @@
         
         drawing = NO;
         [textCell endEditing:textView];
-        
-        [self drawWithString:textView.string];
-        [canvas setNeedsDisplay:YES];
+    
+        if (textView.string.length > 0) {
+            self.drawText = textView.string;
+            needUpdateToMainLayer = YES;
+            [canvas setNeedsDisplay:YES];
+        }
     }
 }
 

@@ -24,7 +24,7 @@
 
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
     
-    path = [NSBezierPath bezierPath];
+    //path = [NSBezierPath bezierPath];
     
     [path setLineWidth:lineWidth];
 	[path setLineCapStyle:NSSquareLineCapStyle];
@@ -33,52 +33,6 @@
     [path appendBezierPathWithRect:NSMakeRect(begin.x, begin.y, end.x - begin.x, end.y - begin.y)];
     
 	return path;
-}
-
-- (NSBezierPath *)performDrawWithEvent:(NSEvent*)event
-                         withMainImage:(NSBitmapImageRep *)aMainImage
-                           bufferImage:(NSBitmapImageRep *)aBufferImage
-                                  view:(NSView*)fromView {
-    
-    @autoreleasepool {
-        
-        mainImage   = aMainImage;
-        bufferImage = aBufferImage;
-        canvas      = fromView;
-        
-        NSPoint point = [fromView convertPoint:[event locationInWindow] fromView:nil];
-        
-        [ImageTools clearBitmapImage:bufferImage];
-        
-        NSBitmapImageRep *drawToImage = nil;
-        
-        if (event.type == NSLeftMouseUp) {
-            drawToImage = mainImage;
-            drawing     = NO;
-        }
-        else if (event.type == NSLeftMouseDown) {
-            drawToImage = bufferImage;
-            lastPoint   = point;
-            drawing     = YES;
-        }
-        else {
-            drawToImage = bufferImage;
-        }
-        
-        GCLockBitmapImage(drawToImage);
-        
-        [foregroundColor setStroke];
-        [backgroundColor setFill];
-        
-        [self pathFromPoint:lastPoint toPoint:point];
-        
-        [path stroke];
-        [path fill];
-        
-        GCUnlockBitmapImage(drawToImage);
-    }
-    
-	return nil;
 }
 
 @end

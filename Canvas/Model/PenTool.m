@@ -28,8 +28,13 @@
     [path setLineCapStyle:NSRoundLineCapStyle];
     [path setLineJoinStyle:NSRoundLineJoinStyle];
     
-	[path moveToPoint:begin];
-	[path lineToPoint:end];
+    if (path.elementCount == 0) {
+        [path moveToPoint:begin];
+        [path lineToPoint:end];
+    }
+	else {
+        [path lineToPoint:end];
+    }
     
 	return path;
 }
@@ -56,7 +61,8 @@
 	return nil;
 }
 
-- (void)drawOnContext {
+- (void)drawOnMainLayer {
+    
     [foregroundColor    setStroke];
     [path               stroke];
     [path               removeAllPoints];

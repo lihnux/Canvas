@@ -84,5 +84,5 @@ enum {
 @interface DrawingTool (Abstract)
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end;
 - (NSBezierPath *)performDrawWithEvent:(NSEvent*)event view:(NSView*)fromView;
-- (void)drawOnContext;
+- (void)drawOnMainLayer;
 @end

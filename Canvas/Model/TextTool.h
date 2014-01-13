@@ -15,6 +15,8 @@
     BOOL        italic;
     BOOL        underline;
     
+    NSString    *drawText;
+    
     NSTextFieldCell *textCell;
     NSText          *textView;
 }
@@ -24,5 +26,6 @@
 @property (nonatomic, assign)   BOOL        bold;
 @property (nonatomic, assign)   BOOL        italic;
 @property (nonatomic, assign)   BOOL        underline;
+@property (nonatomic, copy)     NSString    *drawText;
 
 @end

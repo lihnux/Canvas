@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Paul Li. All rights reserved.
 //
 
-#import "DrawingTool.h"
+#import "PenTool.h"
 
-@interface OverlayEraserTool : DrawingTool
+@interface OverlayEraserTool : PenTool
 
 @end

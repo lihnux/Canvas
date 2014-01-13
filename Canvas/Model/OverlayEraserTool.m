@@ -24,6 +24,16 @@
 
 #pragma mark - Implement Drawing Methods
 
+- (void)drawOnMainLayer {
+    [[NSGraphicsContext currentContext] saveGraphicsState];
+    [[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
+    
+    [super drawOnMainLayer];
+    
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
+}
+
+/*
 - (NSBezierPath *)pathFromPoint:(NSPoint)begin toPoint:(NSPoint)end {
     
     path = [NSBezierPath bezierPath];
@@ -77,6 +87,6 @@
     
 	return nil;
 }
-
+*/
 
 @end

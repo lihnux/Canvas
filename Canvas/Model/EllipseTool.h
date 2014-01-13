@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Paul Li. All rights reserved.
 //
 
-#import "DrawingTool.h"
+#import "ShapeTool.h"
 
-@interface EllipseTool : DrawingTool
+@interface EllipseTool : ShapeTool
 
 @end

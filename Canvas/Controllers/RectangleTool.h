@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Paul Li. All rights reserved.
 //
 
-#import "DrawingTool.h"
+#import "ShapeTool.h"
 
-@interface RectangleTool : DrawingTool
+@interface RectangleTool : ShapeTool
 
 @end
